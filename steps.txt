@@ -1,0 +1,4 @@
+[npm install] if fails [npm audit fix]
+[npm run build]
+[npm start]
+

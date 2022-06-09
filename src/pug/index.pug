@@ -15,6 +15,9 @@ html(lang='en')
 
         // Font Awesome icons (free version)
         script(src='https://use.fontawesome.com/releases/v6.1.0/js/all.js', crossorigin='anonymous')
+        script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', crossorigin='anonymous')
+        script(src='https://cdn.jsdelivr.net/npm/apexcharts', crossorigin='anonymous')
+
 
         // Google fonts
         link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
@@ -55,6 +58,50 @@ html(lang='en')
         // Services
         section#services.page-section
             .container
+                .dropdown
+                    button#PredictDropdownButton.btn.btn-secondary.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false") --select--
+                    ul#PredictDropdownMenu.dropdown-menu(aria-labelledby="PredictDropdownButton")
+                        li
+                            a.dropdown-item(href="#services") BTC-USD
+                        li
+                            a.dropdown-item(href="#services") BCH-USD
+                        li
+                            a.dropdown-item(href="#services") XMR-USD
+                        li
+                            a.dropdown-item(href="#services") ZEC-USD
+                        li
+                            a.dropdown-item(href="#services") XRP-USD
+                        li
+                            a.dropdown-item(href="#services") XLM-USD
+                        li
+                            a.dropdown-item(href="#services") DASH-USD
+                        li
+                            a.dropdown-item(href="#services") BTG-USD
+                        li
+                            a.dropdown-item(href="#services") XRP-USD
+                        li
+                            a.dropdown-item(href="#services") TRX-USD
+                        li
+                            a.dropdown-item(href="#services") ETC-USD
+                        li
+                            a.dropdown-item(href="#services") MIOTA-USD
+                        li
+                            a.dropdown-item(href="#services") LTC-USD
+                        li
+                            a.dropdown-item(href="#services") ADA-USD
+                        li
+                            a.dropdown-item(href="#services") XEM-USD
+                        li
+                            a.dropdown-item(href="#services") BTCD-USD
+                button#PredictDropdownLoadingButton.btn.btn-secondary.visually-hidden.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false",disabled="true")
+                    span.spinner-border.spinner-border-sm(role='status',aria-hidden='true')
+                div#PredictionLoadingSpinner.d-flex.align-items-center.visually-hidden
+                    strong Fetching data.....
+                    div.spinner-border.ms-auto(role='status',aria-hidden="true")
+                div#stockName.text-center
+                    h2.section-heading.text-uppercase Predicting stock price for next 5 days
+                    h3.section-subheading.text-muted Please choose the currency from dropdown
+                div#chart.apex-charts
                 .text-center
                     h2.section-heading.text-uppercase Services
                     h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
@@ -391,6 +438,8 @@ html(lang='en')
         script(src='https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js')
 
         // Core theme JS
+        script(src='js/moment.min.js')
+        script(src='js/lodash.min.js')
         script(src='js/scripts.js')
 
         // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
