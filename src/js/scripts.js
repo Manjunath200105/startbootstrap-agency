@@ -75,6 +75,23 @@ var render_chart = function (data) {
     chart.render();
 }
 
+var render_comparision_chart = function (data) {
+    var predictions = data['predictions']
+    var options = {
+        chart: {
+            type: 'line'
+        },
+        series: data,
+        xaxis: {
+            categories: get_date_range(predictions.length)
+        }
+    }
+
+    var chart = new ApexCharts(document.querySelector("#chart"), options);
+
+    chart.render();
+}
+
 var toggleLoading = function (data) {
     $("#PredictDropdownButton").toggleClass("visually-hidden")
     $("#PredictDropdownLoadingButton").toggleClass("visually-hidden")
@@ -104,5 +121,27 @@ $(document).ready(function () {
                     toggleLoading(cryptoCurrency)
                 }
             });
+    });
+    $('#CompareDropdownMenu a').on('click', function () {
+        var cryptoCurrency = ($(this).text());
+        toggleLoading(cryptoCurrency)
+        var currencyList = ["BTC-USD", "BCH-USD", "XMR-USD", "ZEC-USD", "XRP-USD", "XLM-USD", "DASH-USD",
+            "BTG-USD", "XRP-USD", "TRX-USD", "ETC-USD", "MIOTA-USD", "LTC-USD", "ADA-USD", "XEM-USD", "BTCD-USD"]
+        var comparisionData = []
+        currencyList.forEach(function (currency) {
+            $.post(
+                {
+                    url: "http://127.0.0.1:8080/predict",
+                    data: {name: currency},
+                    success: function (data) {
+                        comparisionData.push({name: currency, data: data})
+                    },
+                    failure: function (data) {
+                        console.log(data)
+                        comparisionData.push({name: currency, data: data})
+                    }
+                });
+        })
+        render_comparision_chart(comparisionData)
     });
 });

@@ -39,7 +39,7 @@ html(lang='en')
                 #navbarResponsive.collapse.navbar-collapse
                     ul.navbar-nav.text-uppercase.ms-auto.py-4.py-lg-0
                         li.nav-item
-                            a.nav-link(href='#services') Services
+                            a.nav-link(href='#predict') Predict
                         li.nav-item
                             a.nav-link(href='#portfolio') Portfolio
                         li.nav-item
@@ -53,46 +53,46 @@ html(lang='en')
             .container
                 .masthead-subheading Welcome To Our Studio!
                 .masthead-heading.text-uppercase It's Nice To Meet You
-                a.btn.btn-primary.btn-xl.text-uppercase(href='#services') Tell Me More
+                a.btn.btn-primary.btn-xl.text-uppercase(href='#predict') Tell Me More
 
         // Services
-        section#services.page-section
+        section#predict.page-section
             .container
                 .dropdown
                     button#PredictDropdownButton.btn.btn-secondary.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false") --select--
                     ul#PredictDropdownMenu.dropdown-menu(aria-labelledby="PredictDropdownButton")
                         li
-                            a.dropdown-item(href="#services") BTC-USD
+                            a.dropdown-item(href="#predict") BTC-USD
                         li
-                            a.dropdown-item(href="#services") BCH-USD
+                            a.dropdown-item(href="#predict") BCH-USD
                         li
-                            a.dropdown-item(href="#services") XMR-USD
+                            a.dropdown-item(href="#predict") XMR-USD
                         li
-                            a.dropdown-item(href="#services") ZEC-USD
+                            a.dropdown-item(href="#predict") ZEC-USD
                         li
-                            a.dropdown-item(href="#services") XRP-USD
+                            a.dropdown-item(href="#predict") XRP-USD
                         li
-                            a.dropdown-item(href="#services") XLM-USD
+                            a.dropdown-item(href="#predict") XLM-USD
                         li
-                            a.dropdown-item(href="#services") DASH-USD
+                            a.dropdown-item(href="#predict") DASH-USD
                         li
-                            a.dropdown-item(href="#services") BTG-USD
+                            a.dropdown-item(href="#predict") BTG-USD
                         li
-                            a.dropdown-item(href="#services") XRP-USD
+                            a.dropdown-item(href="#predict") XRP-USD
                         li
-                            a.dropdown-item(href="#services") TRX-USD
+                            a.dropdown-item(href="#predict") TRX-USD
                         li
-                            a.dropdown-item(href="#services") ETC-USD
+                            a.dropdown-item(href="#predict") ETC-USD
                         li
-                            a.dropdown-item(href="#services") MIOTA-USD
+                            a.dropdown-item(href="#predict") MIOTA-USD
                         li
-                            a.dropdown-item(href="#services") LTC-USD
+                            a.dropdown-item(href="#predict") LTC-USD
                         li
-                            a.dropdown-item(href="#services") ADA-USD
+                            a.dropdown-item(href="#predict") ADA-USD
                         li
-                            a.dropdown-item(href="#services") XEM-USD
+                            a.dropdown-item(href="#predict") XEM-USD
                         li
-                            a.dropdown-item(href="#services") BTCD-USD
+                            a.dropdown-item(href="#predict") BTCD-USD
                 button#PredictDropdownLoadingButton.btn.btn-secondary.visually-hidden.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false",disabled="true")
                     span.spinner-border.spinner-border-sm(role='status',aria-hidden='true')
                 div#PredictionLoadingSpinner.d-flex.align-items-center.visually-hidden
@@ -102,31 +102,81 @@ html(lang='en')
                     h2.section-heading.text-uppercase Predicting stock price for next 5 days
                     h3.section-subheading.text-muted Please choose the currency from dropdown
                 div#chart.apex-charts
-                .text-center
-                    h2.section-heading.text-uppercase Services
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
-                .row.text-center
-                    .col-md-4
-                        span.fa-stack.fa-4x
-                            i.fas.fa-circle.fa-stack-2x.text-primary
-                            i.fas.fa-shopping-cart.fa-stack-1x.fa-inverse
-                        h4.my-3 E-Commerce
-                        p.text-muted
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
-                    .col-md-4
-                        span.fa-stack.fa-4x
-                            i.fas.fa-circle.fa-stack-2x.text-primary
-                            i.fas.fa-laptop.fa-stack-1x.fa-inverse
-                        h4.my-3 Responsive Design
-                        p.text-muted
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
-                    .col-md-4
-                        span.fa-stack.fa-4x
-                            i.fas.fa-circle.fa-stack-2x.text-primary
-                            i.fas.fa-lock.fa-stack-1x.fa-inverse
-                        h4.my-3 Web Security
-                        p.text-muted
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+                //.text-center
+                //    h2.section-heading.text-uppercase Services
+                //    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
+                //.row.text-center
+                //    .col-md-4
+                //        span.fa-stack.fa-4x
+                //            i.fas.fa-circle.fa-stack-2x.text-primary
+                //            i.fas.fa-shopping-cart.fa-stack-1x.fa-inverse
+                //        h4.my-3 E-Commerce
+                //        p.text-muted
+                //            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+                //    .col-md-4
+                //        span.fa-stack.fa-4x
+                //            i.fas.fa-circle.fa-stack-2x.text-primary
+                //            i.fas.fa-laptop.fa-stack-1x.fa-inverse
+                //        h4.my-3 Responsive Design
+                //        p.text-muted
+                //            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+                //    .col-md-4
+                //        span.fa-stack.fa-4x
+                //            i.fas.fa-circle.fa-stack-2x.text-primary
+                //            i.fas.fa-lock.fa-stack-1x.fa-inverse
+                //        h4.my-3 Web Security
+                //        p.text-muted
+                //            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+
+        // Compare
+        section#compare.page-section
+            .container
+                //select.select(multiple)
+                //    option(value="1") One
+                //    option(value="2") Two
+                //    option(value="3") Three
+                //    option(value="4") Four
+                //    option(value="5") Five
+                //label.form-label.select-label Example label
+                .dropdown
+                    button#CompareDropdownButton.btn.btn-secondary.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false") --select--
+                    ul#CompareDropdownMenu.dropdown-menu(aria-labelledby="PredictDropdownButton")
+                        li
+                            a.dropdown-item(href="#compare") Historic data
+                        li
+                            a.dropdown-item(href="#compare") Prediction
+                button#CompareDropdownLoadingButton.btn.btn-secondary.visually-hidden.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false",disabled="true")
+                    span.spinner-border.spinner-border-sm(role='status',aria-hidden='true')
+                div#CompareLoadingSpinner.d-flex.align-items-center.visually-hidden
+                    strong Fetching data.....
+                    div.spinner-border.ms-auto(role='status',aria-hidden="true")
+                div#chartForComparision.apex-charts
+                //.text-center
+                //    h2.section-heading.text-uppercase Services
+                //    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
+                //.row.text-center
+                //    .col-md-4
+                //        span.fa-stack.fa-4x
+                //            i.fas.fa-circle.fa-stack-2x.text-primary
+                //            i.fas.fa-shopping-cart.fa-stack-1x.fa-inverse
+                //        h4.my-3 E-Commerce
+                //        p.text-muted
+                //            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+                //    .col-md-4
+                //        span.fa-stack.fa-4x
+                //            i.fas.fa-circle.fa-stack-2x.text-primary
+                //            i.fas.fa-laptop.fa-stack-1x.fa-inverse
+                //        h4.my-3 Responsive Design
+                //        p.text-muted
+                //            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+                //    .col-md-4
+                //        span.fa-stack.fa-4x
+                //            i.fas.fa-circle.fa-stack-2x.text-primary
+                //            i.fas.fa-lock.fa-stack-1x.fa-inverse
+                //        h4.my-3 Web Security
+                //        p.text-muted
+                //            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.
+
 
         // Portfolio Grid
         section#portfolio.page-section.bg-light
