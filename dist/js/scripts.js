@@ -81,19 +81,89 @@ var render_chart = function (data) {
 }
 
 var render_comparision_chart = function (data) {
-    var predictions = data['predictions']
+    var currencyList = ["BTC-USD", "BCH-USD", "XMR-USD", "ZEC-USD", "XRP-USD", "XLM-USD", "DASH-USD",
+        "BTG-USD", "XRP-USD", "TRX-USD", "ETC-USD", "MIOTA-USD", "LTC-USD", "ADA-USD", "XEM-USD", "BTCD-USD"]
     var options = {
+        series: [
+            {
+                name: "BTC-USD",
+                data: data["BTC-USD"]["predictions"]
+            },
+            {
+                name: "BCH-USD",
+                data: data["BCH-USD"]["predictions"]
+            },
+            {
+                name: "XMR-USD",
+                data: data["XMR-USD"]["predictions"]
+            }
+        ],
         chart: {
-            type: 'line'
+            height: 350,
+            type: 'line',
+            zoom: {
+                enabled: false
+            },
         },
-        series: data,
+        dataLabels: {
+            enabled: false
+        },
+        stroke: {
+            width: [5, 7, 5],
+            curve: 'straight',
+            dashArray: [0, 8, 5]
+        },
+        title: {
+            text: 'Page Statistics',
+            align: 'left'
+        },
+        legend: {
+            tooltipHoverFormatter: function (val, opts) {
+                return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
+            }
+        },
+        markers: {
+            size: 0,
+            hover: {
+                sizeOffset: 6
+            }
+        },
         xaxis: {
-            categories: get_date_range(predictions.length)
+            categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
+                '10 Jan', '11 Jan', '12 Jan'
+            ],
+        },
+        tooltip: {
+            y: [
+                {
+                    title: {
+                        formatter: function (val) {
+                            return val + " (mins)"
+                        }
+                    }
+                },
+                {
+                    title: {
+                        formatter: function (val) {
+                            return val + " per session"
+                        }
+                    }
+                },
+                {
+                    title: {
+                        formatter: function (val) {
+                            return val;
+                        }
+                    }
+                }
+            ]
+        },
+        grid: {
+            borderColor: '#f1f1f1',
         }
-    }
+    };
 
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-
+    var chart = new ApexCharts(document.querySelector("#chartForComparision"), options);
     chart.render();
 }
 
@@ -130,23 +200,19 @@ $(document).ready(function () {
     $('#CompareDropdownMenu a').on('click', function () {
         var cryptoCurrency = ($(this).text());
         toggleLoading(cryptoCurrency)
-        var currencyList = ["BTC-USD", "BCH-USD", "XMR-USD", "ZEC-USD", "XRP-USD", "XLM-USD", "DASH-USD",
-            "BTG-USD", "XRP-USD", "TRX-USD", "ETC-USD", "MIOTA-USD", "LTC-USD", "ADA-USD", "XEM-USD", "BTCD-USD"]
-        var comparisionData = []
-        currencyList.forEach(function (currency) {
-            $.post(
-                {
-                    url: "http://127.0.0.1:8080/predict",
-                    data: {name: currency},
-                    success: function (data) {
-                        comparisionData.push({name: currency, data: data})
-                    },
-                    failure: function (data) {
-                        console.log(data)
-                        comparisionData.push({name: currency, data: data})
-                    }
-                });
-        })
-        render_comparision_chart(comparisionData)
+        $.get(
+            {
+                url: "http://127.0.0.1:8080/predict-all",
+                success: function (data) {
+                    // var data = { name: 'Bob', age: 12 };
+                    // Window.localStorage.setItem('', data);
+                    // localStorage.clear();
+                    // var data = Window.localStorage.getItem('person');
+                    render_comparision_chart(data)
+                },
+                failure: function (data) {
+                    console.log(data)
+                }
+            });
     });
 });
