@@ -77,7 +77,7 @@ var render_chart = function (data) {
 
 var render_comparision_chart = function (data) {
     var currencyList = ["BTC-USD", "BCH-USD", "XMR-USD", "ZEC-USD", "XRP-USD", "XLM-USD", "DASH-USD",
-        "BTG-USD", "XRP-USD", "TRX-USD", "ETC-USD", "MIOTA-USD", "LTC-USD", "ADA-USD", "XEM-USD", "BTCD-USD"]
+        "BTG-USD", "TRX-USD", "ETC-USD", "MIOTA-USD", "LTC-USD", "ADA-USD", "XEM-USD"]
     var options = {
         series: [
             {
@@ -91,27 +91,71 @@ var render_comparision_chart = function (data) {
             {
                 name: "XMR-USD",
                 data: data["XMR-USD"]["predictions"]
+            },
+            {
+                name: "ZEC-USD",
+                data: data["ZEC-USD"]["predictions"]
+            },
+            {
+                name: "XLM-USD",
+                data: data["XLM-USD"]["predictions"]
+            },
+            {
+                name: "DASH-USD",
+                data: data["DASH-USD"]["predictions"]
+            },
+            {
+                name: "BTG-USD",
+                data: data["BTG-USD"]["predictions"]
+            },
+            {
+                name: "XRP-USD",
+                data: data["XRP-USD"]["predictions"]
+            },
+            {
+                name: "TRX-USD",
+                data: data["TRX-USD"]["predictions"]
+            },
+            {
+                name: "ETC-USD",
+                data: data["ETC-USD"]["predictions"]
+            },
+            {
+                name: "MIOTA-USD",
+                data: data["MIOTA-USD"]["predictions"]
+            },
+            {
+                name: "LTC-USD",
+                data: data["LTC-USD"]["predictions"]
+            },
+            {
+                name: "ADA-USD",
+                data: data["ADA-USD"]["predictions"]
+            },
+            {
+                name: "XEM-USD",
+                data: data["XEM-USD"]["predictions"]
             }
         ],
         chart: {
-            height: 350,
+            // height: 350,
             type: 'line',
-            zoom: {
-                enabled: false
-            },
+            // zoom: {
+            //     enabled: true
+            // },
         },
-        dataLabels: {
-            enabled: false
-        },
-        stroke: {
-            width: [5, 7, 5],
-            curve: 'straight',
-            dashArray: [0, 8, 5]
-        },
-        title: {
-            text: 'Page Statistics',
-            align: 'left'
-        },
+        // dataLabels: {
+        //     enabled: false
+        // },
+        // stroke: {
+        //     width: [5, 7, 5],
+        //     curve: 'straight',
+        //     dashArray: [0, 8, 5]
+        // },
+        // title: {
+        //     text: 'Page Statistics',
+        //     align: 'left'
+        // },
         legend: {
             tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
@@ -124,35 +168,33 @@ var render_comparision_chart = function (data) {
             }
         },
         xaxis: {
-            categories: ['01 Jan', '02 Jan', '03 Jan', '04 Jan', '05 Jan', '06 Jan', '07 Jan', '08 Jan', '09 Jan',
-                '10 Jan', '11 Jan', '12 Jan'
-            ],
+            categories: get_date_range(data["BTC-USD"]["predictions"].length),
         },
-        tooltip: {
-            y: [
-                {
-                    title: {
-                        formatter: function (val) {
-                            return val + " (mins)"
-                        }
-                    }
-                },
-                {
-                    title: {
-                        formatter: function (val) {
-                            return val + " per session"
-                        }
-                    }
-                },
-                {
-                    title: {
-                        formatter: function (val) {
-                            return val;
-                        }
-                    }
-                }
-            ]
-        },
+        // tooltip: {
+        //     y: [
+        //         {
+        //             title: {
+        //                 formatter: function (val) {
+        //                     return val + " (mins)"
+        //                 }
+        //             }
+        //         },
+        //         {
+        //             title: {
+        //                 formatter: function (val) {
+        //                     return val + " per session"
+        //                 }
+        //             }
+        //         },
+        //         {
+        //             title: {
+        //                 formatter: function (val) {
+        //                     return val;
+        //                 }
+        //             }
+        //         }
+        //     ]
+        // },
         grid: {
             borderColor: '#f1f1f1',
         }
@@ -173,6 +215,8 @@ var toggleLoading = function (data) {
 }
 
 $(document).ready(function () {
+
+    $('#stock-checkboxes').multiselect();
 
     $('#PredictDropdownMenu a').on('click', function () {
         var cryptoCurrency = ($(this).text());
@@ -199,10 +243,6 @@ $(document).ready(function () {
             {
                 url: "http://127.0.0.1:8080/predict-all",
                 success: function (data) {
-                    // var data = { name: 'Bob', age: 12 };
-                    // Window.localStorage.setItem('', data);
-                    // localStorage.clear();
-                    // var data = Window.localStorage.getItem('person');
                     render_comparision_chart(data)
                 },
                 failure: function (data) {

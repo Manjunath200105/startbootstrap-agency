@@ -12,9 +12,13 @@
         <script src="https://use.fontawesome.com/releases/v6.1.0/js/all.js" crossorigin="anonymous"></script>
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js" crossorigin="anonymous"></script>
         <script src="https://cdn.jsdelivr.net/npm/apexcharts" crossorigin="anonymous"></script>
+        <!--script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js', crossorigin='anonymous')-->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/js/bootstrap-multiselect.js" crossorigin="anonymous"></script>
         <!-- Google fonts-->
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet" type="text/css" />
+        <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-multiselect/0.9.13/css/bootstrap-multiselect.css" rel="stylesheet" type="text/css" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
@@ -123,6 +127,22 @@
                         <li><a class="dropdown-item" href="#compare">Prediction</a></li>
                     </ul>
                 </div>
+                <select id="stock-checkboxes" multiple="multiple">
+                    <option value="BTC-USD">"BTC-USD"</option>
+                    <option value="BCH-USD">"BCH-USD"</option>
+                    <option value="XMR-USD">"XMR-USD"</option>
+                    <option value="ZEC-USD">"ZEC-USD"</option>
+                    <option value="XRP-USD">"XRP-USD"</option>
+                    <option value="XLM-USD">"XLM-USD"</option>
+                    <option value="DASH-USD">"DASH-USD"</option>
+                    <option value="BTG-USD">"BTG-USD"</option>
+                    <option value="TRX-USD">"TRX-USD"</option>
+                    <option value="ETC-USD">"ETC-USD"</option>
+                    <option value="MIOTA-USD">"MIOTA-USD"</option>
+                    <option value="LTC-USD">"LTC-USD"</option>
+                    <option value="ADA-USD">"ADA-USD"</option>
+                    <option value="XEM-USD">"XEM-USD"</option>
+                </select>
                 <button class="btn btn-secondary visually-hidden dropdown-toggle" id="CompareDropdownLoadingButton" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled="true"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
                 <div class="d-flex align-items-center visually-hidden" id="CompareLoadingSpinner">
                     <strong>Fetching data.....</strong>
