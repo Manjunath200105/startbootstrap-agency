@@ -64,27 +64,6 @@ var get_date_range = function (numberOfDays, type) {
     })
 }
 
-
-// var render_chart = function (data) {
-//     var predictions = data['predictions']
-//     var options = {
-//         chart: {
-//             type: 'line'
-//         },
-//         series: [{
-//             name: 'stock-price',
-//             data: predictions
-//         }],
-//         xaxis: {
-//             categories: get_date_range(predictions.length)
-//         }
-//     }
-//
-//     var chart = new ApexCharts(document.querySelector("#chart"), options);
-//
-//     chart.render();
-// }
-
 var render_comparision_chart = function (data, type) {
     var comparisonType = _.snakeCase(type).toLowerCase();
     var currencyList = Object.keys(data)
@@ -124,25 +103,31 @@ var render_comparision_chart = function (data, type) {
     chart.render();
 }
 
-var toggleLoading = function (data) {
-    $("#PredictDropdownButton").toggleClass("disabled").text(data)
-    $("#PredictionLoadingSpinner").toggleClass("visually-hidden")
-    $("#stockName").toggleClass("visually-hidden")
-    $("#stockName h2").text(data)
-    $("#chart").toggleClass("visually-hidden")
-}
-
-var toggleLoadingIcon = function () {
+var toggleLoadingIcon = function (payload) {
     $("#graph-details").toggleClass("visually-hidden");
     $("#CompareLoadingSpinner").toggleClass("visually-hidden");
     if ($('#chartForComparison').length === 0) {
         $('#compare .container').append('<div class=\"apex-charts\" id=\"chartForComparison\"</div>');
+        $("#CompareLoadingSpinner strong").text("");
     } else {
         $("#chartForComparison").remove();
+        $("#CompareLoadingSpinner strong").text("Fetching data of " + (payload['type'] == 'past_data' ? "past" : "next") + " " + payload['noOfDays'] + " days for " + payload['currencies']);
     }
 }
 
+var showError = function (message) {
+    $('#alert-modal-title').html('Error!!!!');
+    $('#alert-modal-body').html(message);
+    $('#alert-modal').modal('show');
+}
+
 $(document).ready(function () {
+    $('#alert-modal button').click(function () {
+        $('#alert-modal').modal('hide');
+        window.location.href = '/#compare';
+        return false;
+    });
+
     $("select").selectize({
         plugins: ["remove_button"],
         delimiter: ",",
@@ -160,11 +145,17 @@ $(document).ready(function () {
         var comparisonType = $('#type').val()
         var payload = {
             "type": comparisonType,
-            "currency": $('#currency').val().join(","),
+            "currencies": $('#currencies').val().join(","),
             "noOfDays": $('#noOfDays').val()
         }
 
-        toggleLoadingIcon()
+        if (comparisonType == 'predictions' && payload["noOfDays"] <= 0) {
+            showError("Prediction requires at least 1 day to show the graph. Please check your input and try again!")
+            event.preventDefault();
+            return;
+        }
+
+        toggleLoadingIcon(payload)
 
         $.post(
             {
@@ -172,49 +163,16 @@ $(document).ready(function () {
                 dataType: "json",
                 data: payload,
                 success: function (data) {
-                    toggleLoadingIcon()
+                    toggleLoadingIcon(payload)
                     render_comparision_chart(data, comparisonType)
                 },
                 failure: function (data) {
-                    toggleLoading(comparisonType)
+                    toggleLoadingIcon(payload)
+                    showError(data['msg'])
                 }
             });
 
         // alert( "Handler for .submit() called." );
         event.preventDefault();
-    });
-
-
-    $('#PredictDropdownMenu a').on('click', function () {
-        var cryptoCurrency = ($(this).text());
-        toggleLoading(cryptoCurrency)
-        $.post(
-            {
-                url: "http://127.0.0.1:8080/predict",
-                data: {name: cryptoCurrency},
-                success: function (data) {
-                    toggleLoading(cryptoCurrency)
-                    render_chart(data)
-                },
-                failure: function (data) {
-                    console.log(data)
-                    toggleLoading(cryptoCurrency)
-                }
-            });
-    });
-    $('#CompareDropdownMenu a').on('click', function () {
-        var comparisonType = ($(this).text());
-        toggleComparisonLoading(comparisonType)
-        $.get(
-            {
-                url: "http://127.0.0.1:8080/predict-all",
-                success: function (data) {
-                    toggleComparisonLoading(comparisonType)
-                    render_comparision_chart(data, comparisonType)
-                },
-                failure: function (data) {
-                    console.log(data)
-                }
-            });
     });
 });

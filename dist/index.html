@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Agency - Start Bootstrap Theme</title>
+        <title>Crypto Currency comparer</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -33,7 +33,7 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#predict">Predict</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#compare">Compare</a></li>
                         <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
                         <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
@@ -45,93 +45,43 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Welcome To Our Studio!</div>
+                <div class="masthead-subheading">Welcome To Our Application!</div>
                 <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#predict">Tell Me More</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#compare">Start Comparing</a>
             </div>
         </header>
-        <!-- Services-->
-        <section class="page-section" id="predict">
-            <div class="container">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle" id="PredictDropdownButton" type="button" data-bs-toggle="dropdown" aria-expanded="false">--select--</button>
-                    <ul class="dropdown-menu" id="PredictDropdownMenu" aria-labelledby="PredictDropdownButton">
-                        <li><a class="dropdown-item" href="#predict">BTC-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">BCH-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">XMR-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">ZEC-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">XRP-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">XLM-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">DASH-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">BTG-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">XRP-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">TRX-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">ETC-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">MIOTA-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">LTC-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">ADA-USD</a></li>
-                        <li><a class="dropdown-item" href="#predict">XEM-USD</a></li>
-                    </ul>
+        <div class="modal fade" id="alert-modal">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h4 class="modal-title text-start text-danger" id="alert-modal-title"></h4>
+                        <button class="btn-close btn-primary" type="button" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    </div>
+                    <div class="modal-body text-danger" id="alert-modal-body"></div>
+                    <div class="modal-footer"></div>
+                    <button class="btn btn-primary" type="button" data-dismiss="modal">Close</button>
                 </div>
-                <button class="btn btn-secondary visually-hidden dropdown-toggle" id="PredictDropdownLoadingButton" type="button" data-bs-toggle="dropdown" aria-expanded="false" disabled="true"><span class="spinner-border spinner-border-sm" role="status" aria-hidden="true"></span></button>
-                <div class="d-flex align-items-center visually-hidden" id="PredictionLoadingSpinner">
-                    <strong>Fetching data.....</strong>
-                    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
-                </div>
-                <div class="text-center" id="stockName">
-                    <h2 class="section-heading text-uppercase">Predicting stock price for next 5 days</h2>
-                    <h3 class="section-subheading text-muted">Please choose the currency from dropdown</h3>
-                </div>
-                <div class="apex-charts" id="chart"></div>
-                <!--.text-center-->
-                <!--    h2.section-heading.text-uppercase Services-->
-                <!--    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.-->
-                <!--.row.text-center-->
-                <!--    .col-md-4-->
-                <!--        span.fa-stack.fa-4x-->
-                <!--            i.fas.fa-circle.fa-stack-2x.text-primary-->
-                <!--            i.fas.fa-shopping-cart.fa-stack-1x.fa-inverse-->
-                <!--        h4.my-3 E-Commerce-->
-                <!--        p.text-muted-->
-                <!--            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.-->
-                <!--    .col-md-4-->
-                <!--        span.fa-stack.fa-4x-->
-                <!--            i.fas.fa-circle.fa-stack-2x.text-primary-->
-                <!--            i.fas.fa-laptop.fa-stack-1x.fa-inverse-->
-                <!--        h4.my-3 Responsive Design-->
-                <!--        p.text-muted-->
-                <!--            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.-->
-                <!--    .col-md-4-->
-                <!--        span.fa-stack.fa-4x-->
-                <!--            i.fas.fa-circle.fa-stack-2x.text-primary-->
-                <!--            i.fas.fa-lock.fa-stack-1x.fa-inverse-->
-                <!--        h4.my-3 Web Security-->
-                <!--        p.text-muted-->
-                <!--            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.-->
             </div>
-        </section>
+        </div>
         <!-- Compare-->
-        <section class="page-section bg-light" id="compare">
+        <section class="page-section" id="compare">
             <div class="container">
-                <!--.dropdown-->
-                <!--    button#CompareDropdownButton.btn.btn-secondary.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false") --select---->
-                <!--    ul#CompareDropdownMenu.dropdown-menu(aria-labelledby="PredictDropdownButton")-->
-                <!--        li-->
-                <!--            a.dropdown-item(href="#compare") Past data-->
-                <!--        li-->
-                <!--            a.dropdown-item(href="#compare") Predictions-->
+                <div class="text-center" id="stockName">
+                    <h2 class="section-heading text-uppercase">Crypto currency comparer</h2>
+                    <h3 class="section-subheading text-muted">Please fill and submit the form to view the comparison</h3>
+                </div>
                 <form id="graph-details">
                     <div class="type">
                         <label for="type">Calculation Type</label>
                         <select id="type" name="type">
-                            <option value="past_data">Past Data</option>
+                            <option value="past_data">Historic Data</option>
                             <option value="predictions">Predictions</option>
                         </select>
                     </div>
-                    <div class="currency">
-                        <label for="currency">
+                    <div class="currencies">
+                        <label>
                             Crypto Currencies
-                            <select id="currency" multiple name="currency">
+                            <select id="currencies" multiple name="currencies">
                                 <option value="BTC-USD">BTC-USD</option>
                                 <option value="BCH-USD">BCH-USD</option>
                                 <option value="XMR-USD">XMR-USD</option>
@@ -163,31 +113,6 @@
                     <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
                 </div>
                 <div class="apex-charts" id="chartForComparison"></div>
-                <!--.text-center-->
-                <!--    h2.section-heading.text-uppercase Services-->
-                <!--    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.-->
-                <!--.row.text-center-->
-                <!--    .col-md-4-->
-                <!--        span.fa-stack.fa-4x-->
-                <!--            i.fas.fa-circle.fa-stack-2x.text-primary-->
-                <!--            i.fas.fa-shopping-cart.fa-stack-1x.fa-inverse-->
-                <!--        h4.my-3 E-Commerce-->
-                <!--        p.text-muted-->
-                <!--            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.-->
-                <!--    .col-md-4-->
-                <!--        span.fa-stack.fa-4x-->
-                <!--            i.fas.fa-circle.fa-stack-2x.text-primary-->
-                <!--            i.fas.fa-laptop.fa-stack-1x.fa-inverse-->
-                <!--        h4.my-3 Responsive Design-->
-                <!--        p.text-muted-->
-                <!--            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.-->
-                <!--    .col-md-4-->
-                <!--        span.fa-stack.fa-4x-->
-                <!--            i.fas.fa-circle.fa-stack-2x.text-primary-->
-                <!--            i.fas.fa-lock.fa-stack-1x.fa-inverse-->
-                <!--        h4.my-3 Web Security-->
-                <!--        p.text-muted-->
-                <!--            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Minima maxime quam architecto quo inventore harum ex magni, dicta impedit.-->
             </div>
         </section>
         <!-- Portfolio Grid-->
