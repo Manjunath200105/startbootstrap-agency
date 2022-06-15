@@ -5,7 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
         <meta name="description" content="" />
         <meta name="author" content="" />
-        <title>Crypto Currency comparer</title>
+        <title>Crypto Currency Comparer</title>
         <!-- Favicon-->
         <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
         <!-- Font Awesome icons (free version)-->
@@ -34,8 +34,7 @@
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                         <li class="nav-item"><a class="nav-link" href="#compare">Compare</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#portfolio">Portfolio</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#workflow">WorkFlow</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     </ul>
@@ -45,8 +44,9 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Welcome To Our Application!</div>
-                <div class="masthead-heading text-uppercase">It's Nice To Meet You</div>
+                <div class="masthead-subheading">Welcome To C3</div>
+                <div class="masthead-heading text-uppercase">Crypto Currency Comparer</div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#workflow">understand the app</a>
                 <a class="btn btn-primary btn-xl text-uppercase" href="#compare">Start Comparing</a>
             </div>
         </header>
@@ -67,46 +67,44 @@
         <section class="page-section" id="compare">
             <div class="container">
                 <div class="text-center" id="stockName">
-                    <h2 class="section-heading text-uppercase">Crypto currency comparer</h2>
+                    <h2 class="section-heading text-uppercase">Crypto Currency Comparer</h2>
                     <h3 class="section-subheading text-muted">Please fill and submit the form to view the comparison</h3>
                 </div>
-                <form id="graph-details">
-                    <div class="type">
-                        <label for="type">Calculation Type</label>
-                        <select id="type" name="type">
-                            <option value="past_data">Historic Data</option>
-                            <option value="predictions">Predictions</option>
+                <form class="row row-cols-lg-auto g-3 align-items-center" id="graph-details">
+                    <div class="col-12">
+                        <label class="visually-hidden" for="currencies">Crypto Currencies</label>
+                        <select class="select" id="currencies" multiple name="currencies">
+                            <option value="" selected disabled>Crypto Currencies</option>
+                            <option value="BTC-USD">BTC-USD</option>
+                            <option value="BCH-USD">BCH-USD</option>
+                            <option value="XMR-USD">XMR-USD</option>
+                            <option value="ZEC-USD">ZEC-USD</option>
+                            <option value="XRP-USD">XRP-USD</option>
+                            <option value="XLM-USD">XLM-USD</option>
+                            <option value="DASH-USD">DASH-USD</option>
+                            <option value="BTG-USD">BTG-USD</option>
+                            <option value="XRP-USD">XRP-USD</option>
+                            <option value="TRX-USD">TRX-USD</option>
+                            <option value="ETC-USD">ETC-USD</option>
+                            <option value="MIOTA-USD">MIOTA-USD</option>
+                            <option value="LTC-USD">LTC-USD</option>
+                            <option value="ADA-USD">ADA-USD</option>
+                            <option value="XEM-USD">XEM-USD</option>
                         </select>
                     </div>
-                    <div class="currencies">
-                        <label>
-                            Crypto Currencies
-                            <select id="currencies" multiple name="currencies">
-                                <option value="BTC-USD">BTC-USD</option>
-                                <option value="BCH-USD">BCH-USD</option>
-                                <option value="XMR-USD">XMR-USD</option>
-                                <option value="ZEC-USD">ZEC-USD</option>
-                                <option value="XRP-USD">XRP-USD</option>
-                                <option value="XLM-USD">XLM-USD</option>
-                                <option value="DASH-USD">DASH-USD</option>
-                                <option value="BTG-USD">BTG-USD</option>
-                                <option value="XRP-USD">XRP-USD</option>
-                                <option value="TRX-USD">TRX-USD</option>
-                                <option value="ETC-USD">ETC-USD</option>
-                                <option value="MIOTA-USD">MIOTA-USD</option>
-                                <option value="LTC-USD">LTC-USD</option>
-                                <option value="ADA-USD">ADA-USD</option>
-                                <option value="XEM-USD">XEM-USD</option>
-                            </select>
-                        </label>
+                    <div class="col-12">
+                        <label class="visually-hidden" for="noOfDays">Number of days</label>
+                        <input class="form-control" id="noOfDays" type="number" name="noOfDays" min="0" max="250" placeholder="days" />
                     </div>
-                    <div class="days">
-                        <label>
-                            Number of days
-                            <input id="noOfDays" type="number" name="noOfDays" min="0" max="250" />
-                        </label>
+                    <div class="col-12">
+                        <label class="visually-hidden" for="type">Action Type</label>
+                        <select class="select" id="type" name="type">
+                            <option value="" selected disabled>Action Type</option>
+                            <option value="past_data">Historical Data</option>
+                            <option value="predictions">Future Predictions</option>
+                        </select>
                     </div>
-                    <button class="btn btn-primary" type="submit">Submit</button>
+                    <div class="col-12"><button class="btn btn-primary" type="submit">Submit</button></div>
                 </form>
                 <div class="d-flex align-items-center visually-hidden" id="CompareLoadingSpinner">
                     <strong>Fetching data.....</strong>
@@ -115,163 +113,76 @@
                 <div class="apex-charts" id="chartForComparison"></div>
             </div>
         </section>
-        <!-- Portfolio Grid-->
-        <section class="page-section bg-light" id="portfolio">
-            <div class="container">
-                <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Portfolio</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
-                </div>
-                <div class="row">
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 1-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal1">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/1.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Threads</div>
-                                <div class="portfolio-caption-subheading text-muted">Illustration</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 2-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal2">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/2.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Explore</div>
-                                <div class="portfolio-caption-subheading text-muted">Graphic Design</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4">
-                        <!-- Portfolio item 3-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal3">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/3.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Finish</div>
-                                <div class="portfolio-caption-subheading text-muted">Identity</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-lg-0">
-                        <!-- Portfolio item 4-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal4">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/4.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Lines</div>
-                                <div class="portfolio-caption-subheading text-muted">Branding</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6 mb-4 mb-sm-0">
-                        <!-- Portfolio item 5-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal5">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/5.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Southwest</div>
-                                <div class="portfolio-caption-subheading text-muted">Website Design</div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-lg-4 col-sm-6">
-                        <!-- Portfolio item 6-->
-                        <div class="portfolio-item">
-                            <a class="portfolio-link" data-bs-toggle="modal" href="#portfolioModal6">
-                                <div class="portfolio-hover">
-                                    <div class="portfolio-hover-content"><i class="fas fa-plus fa-3x"></i></div>
-                                </div>
-                                <img class="img-fluid" src="assets/img/portfolio/6.jpg" alt="..." />
-                            </a>
-                            <div class="portfolio-caption">
-                                <div class="portfolio-caption-heading">Window</div>
-                                <div class="portfolio-caption-subheading text-muted">Photography</div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
         <!-- About-->
-        <section class="page-section" id="about">
+        <section class="page-section" id="workflow">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">About</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h2 class="section-heading text-uppercase">Workflow</h2>
+                    <h3 class="section-subheading text-muted">A detailed description of application flow</h3>
                 </div>
                 <ul class="timeline">
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/1.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>2009-2011</h4>
-                                <h4 class="subheading">Our Humble Beginnings</h4>
+                                <h4>UI/Frontend</h4>
+                                <h6 class="subheading">Collecting user inputs (html, pug, jquery, bootstrap, selectize)</h6>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            <div class="timeline-body">
+                                <p class="text-dark text-lg-center">Crypto currencies :-</p>
+                                <p class="text-muted text-lg-start">you can select single/multiple currencies. Graph is shown for all the selected currencies. Hence, enabling user for easy comparision.</p>
+                                <p class="text-dark text-lg-center">Days (0 - 250):-</p>
+                                <p class="text-muted text-lg-start">This defines how many day's worth of graph would you like to view.</p>
+                                <p class="text-muted text-lg-start">today = 0 days with historic type</p>
+                                <p class="text-muted text-lg-start">yesterday = 1 days with historic type</p>
+                                <p class="text-muted text-lg-start">tomorrow = 1 days with prediction type</p>
+                                <p class="text-muted text-lg-start">Note: Error is shown as 0 is not allowed with prediction type as it is considered as today</p>
+                                <p class="text-dark text-lg-center">Action Type :-</p>
+                                <p class="text-muted text-lg-start">Historic Data = this provides data from today to previous n days. n being the numberOfDays selected in earlier form field.</p>
+                                <p class="text-muted text-lg-start">Predictions = this provides data from today to previous n days. n being the numberOfDays selected in earlier form field.</p>
+                            </div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/2.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>March 2011</h4>
-                                <h4 class="subheading">An Agency is Born</h4>
+                                <h4>Backend</h4>
+                                <h6 class="subheading">Fetch and Predict future price (Python3, flask, pandas, yfinance)</h6>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
+                            <div class="timeline-body">
+                                <p class="text-dark text-lg-start">For each crypto currencies selected in the list, check the type of action needs to be performed.</p>
+                                <p class="text-muted text-lg-start">Historic Data :- Get previous data from yahoo-finance</p>
+                                <p class="text-muted text-lg-start">Prediction :- Prepare the historic data for modelling, feed it to the net and train the model.</p>
+                                <p class="text-muted text-lg-start">The model predicts crypto prices for given number of days.</p>
+                                <p class="text-dark text-lg-start">Note:</p>
+                                <p class="text-muted text-lg-start">We are using pre-designed MLP Neural Network-Tensorflow (3- hidden levels). The performance can be optimized by changing the network structure or by changing to LSTM or RNN network.</p>
+                            </div>
                         </div>
                     </li>
                     <li>
                         <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/3.jpg" alt="..." /></div>
                         <div class="timeline-panel">
                             <div class="timeline-heading">
-                                <h4>December 2015</h4>
-                                <h4 class="subheading">Transition to Full Service</h4>
+                                <h4>UI/Frontend</h4>
+                                <h4 class="subheading">Displaying the graph (axischartjs,bootstrap,jquery,lodash,moment)</h4>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
-                        </div>
-                    </li>
-                    <li class="timeline-inverted">
-                        <div class="timeline-image"><img class="rounded-circle img-fluid" src="assets/img/about/4.jpg" alt="..." /></div>
-                        <div class="timeline-panel">
-                            <div class="timeline-heading">
-                                <h4>July 2020</h4>
-                                <h4 class="subheading">Phase Two Expansion</h4>
+                            <div class="timeline-body">
+                                <p class="text-muted text-lg-start">X-axis : dates</p>
+                                <p class="text-muted text-lg-start">Y-axis : currency prices</p>
+                                <p class="text-dark text-lg-start">Note:</p>
+                                <p class="text-muted text-lg-start">Loading spinner will be visible untill the graph is generated</p>
+                                <p class="text-muted text-lg-start">Hovering over the graph lines will show price values for all the visible currencies</p>
                             </div>
-                            <div class="timeline-body"><p class="text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!</p></div>
                         </div>
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
+                            <a class="stretched-link" href="#compare"></a>
                             <h4>
-                                Be Part
+                                Start
                                 <br />
-                                Of Our
-                                <br />
-                                Story!
+                                Comparing
                             </h4>
                         </div>
                     </li>
@@ -283,10 +194,10 @@
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Our Amazing Team</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">Brains and Hands that made this application come to life.</h3>
                 </div>
                 <div class="row">
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
                             <h4>Parveen Anand</h4>
@@ -296,7 +207,7 @@
                             <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
                             <h4>Diana Petersen</h4>
@@ -306,7 +217,17 @@
                             <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
-                    <div class="col-lg-4">
+                    <div class="col-lg-3">
+                        <div class="team-member">
+                            <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
+                            <h4>Larry Parker</h4>
+                            <p class="text-muted">Lead Developer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                        </div>
+                    </div>
+                    <div class="col-lg-3">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
                             <h4>Larry Parker</h4>
@@ -318,35 +239,16 @@
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.</p></div>
+                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">We all are final year Computer Science students in Sapthagiri College. Feel free to reach out to us for any information regarding the app.</p></div>
                 </div>
             </div>
         </section>
-        <!-- Clients-->
-        <div class="py-5">
-            <div class="container">
-                <div class="row align-items-center">
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/microsoft.svg" alt="..." aria-label="Microsoft Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/google.svg" alt="..." aria-label="Google Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/facebook.svg" alt="..." aria-label="Facebook Logo" /></a>
-                    </div>
-                    <div class="col-md-3 col-sm-6 my-3">
-                        <a href="#!"><img class="img-fluid img-brand d-block mx-auto" src="assets/img/logos/ibm.svg" alt="..." aria-label="IBM Logo" /></a>
-                    </div>
-                </div>
-            </div>
-        </div>
         <!-- Contact-->
         <section class="page-section" id="contact">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Contact Us</h2>
-                    <h3 class="section-subheading text-muted">Lorem ipsum dolor sit amet consectetur.</h3>
+                    <h3 class="section-subheading text-muted">Answer to your queries are just a click away. Start typing!!</h3>
                 </div>
                 <!-- * * * * * * * * * * * * * * *-->
                 <!-- * * SB Forms Contact Form * *-->
@@ -409,7 +311,7 @@
         <footer class="footer py-4">
             <div class="container">
                 <div class="row align-items-center">
-                    <div class="col-lg-4 text-lg-start">Copyright &copy; Your Website 2022</div>
+                    <div class="col-lg-4 text-lg-start">Copyright &copy; C3 2022</div>
                     <div class="col-lg-4 my-3 my-lg-0">
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
                         <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>

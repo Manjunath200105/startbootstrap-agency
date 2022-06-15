@@ -8,7 +8,7 @@ html(lang='en')
         meta(name='description', content='')
         meta(name='author', content='')
 
-        title Crypto Currency comparer
+        title Crypto Currency Comparer
 
         // Favicon
         link(rel='icon', type='image/x-icon', href='assets/favicon.ico')
@@ -46,9 +46,7 @@ html(lang='en')
                         li.nav-item
                             a.nav-link(href='#compare') Compare
                         li.nav-item
-                            a.nav-link(href='#portfolio') Portfolio
-                        li.nav-item
-                            a.nav-link(href='#about') About
+                            a.nav-link(href='#workflow') WorkFlow
                         li.nav-item
                             a.nav-link(href='#team') Team
                         li.nav-item
@@ -56,8 +54,9 @@ html(lang='en')
         // Masthead
         header.masthead
             .container
-                .masthead-subheading Welcome To Our Application!
-                .masthead-heading.text-uppercase It's Nice To Meet You
+                .masthead-subheading Welcome To C3
+                .masthead-heading.text-uppercase Crypto Currency Comparer
+                a.btn.btn-primary.btn-xl.text-uppercase(href='#workflow') understand the app
                 a.btn.btn-primary.btn-xl.text-uppercase(href='#compare') Start Comparing
 
 
@@ -71,184 +70,140 @@ html(lang='en')
                     div#alert-modal-body.modal-body.text-danger
                     .modal-footer
                     button.btn.btn-primary(type='button' data-dismiss="modal") Close
+
         // Compare
         section#compare.page-section
             .container
                 div#stockName.text-center
-                    h2.section-heading.text-uppercase Crypto currency comparer
+                    h2.section-heading.text-uppercase Crypto Currency Comparer
                     h3.section-subheading.text-muted Please fill and submit the form to view the comparison
-                form#graph-details
-                    .type
-                        label(for="type") Calculation Type
-                        select#type(name="type")
-                            option(value="past_data") Historic Data
-                            option(value="predictions") Predictions
-                    .currencies
-                        label Crypto Currencies
-                            select#currencies(multiple name="currencies")
-                                option(value="BTC-USD") BTC-USD
-                                option(value="BCH-USD") BCH-USD
-                                option(value="XMR-USD") XMR-USD
-                                option(value="ZEC-USD") ZEC-USD
-                                option(value="XRP-USD") XRP-USD
-                                option(value="XLM-USD") XLM-USD
-                                option(value="DASH-USD") DASH-USD
-                                option(value="BTG-USD") BTG-USD
-                                option(value="XRP-USD") XRP-USD
-                                option(value="TRX-USD") TRX-USD
-                                option(value="ETC-USD") ETC-USD
-                                option(value="MIOTA-USD") MIOTA-USD
-                                option(value="LTC-USD") LTC-USD
-                                option(value="ADA-USD") ADA-USD
-                                option(value="XEM-USD") XEM-USD
-                    .days
-                        label Number of days
-                            input#noOfDays(type="number" name="noOfDays" min="0" max="250")
-                    button.btn.btn-primary(type="submit") Submit
+                form#graph-details.row.row-cols-lg-auto.g-3.align-items-center
+                    .col-12
+                        label.visually-hidden(for="currencies") Crypto Currencies
+                        select#currencies.select(multiple name="currencies")
+                            option(value="" selected disabled) Crypto Currencies
+                            option(value="BTC-USD") BTC-USD
+                            option(value="BCH-USD") BCH-USD
+                            option(value="XMR-USD") XMR-USD
+                            option(value="ZEC-USD") ZEC-USD
+                            option(value="XRP-USD") XRP-USD
+                            option(value="XLM-USD") XLM-USD
+                            option(value="DASH-USD") DASH-USD
+                            option(value="BTG-USD") BTG-USD
+                            option(value="XRP-USD") XRP-USD
+                            option(value="TRX-USD") TRX-USD
+                            option(value="ETC-USD") ETC-USD
+                            option(value="MIOTA-USD") MIOTA-USD
+                            option(value="LTC-USD") LTC-USD
+                            option(value="ADA-USD") ADA-USD
+                            option(value="XEM-USD") XEM-USD
+                    .col-12
+                        label.visually-hidden(for="noOfDays") Number of days
+                        input#noOfDays.form-control(type="number" name="noOfDays" min="0" max="250" placeholder="days")
+                    .col-12
+                        label.visually-hidden(for="type") Action Type
+                        select#type.select( name="type")
+                            option(value="" selected disabled) Action Type
+                            option(value="past_data") Historical Data
+                            option(value="predictions") Future Predictions
+                    .col-12
+                        button.btn.btn-primary(type="submit") Submit
                 div#CompareLoadingSpinner.d-flex.align-items-center.visually-hidden
                     strong Fetching data.....
                     div.spinner-border.ms-auto(role='status',aria-hidden="true")
                 div#chartForComparison.apex-charts
 
-
-        // Portfolio Grid
-        section#portfolio.page-section.bg-light
-            .container
-                .text-center
-                    h2.section-heading.text-uppercase Portfolio
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
-                .row
-                    .col-lg-4.col-sm-6.mb-4
-                        // Portfolio item 1
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal1')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/1.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Threads
-                                .portfolio-caption-subheading.text-muted Illustration
-                    .col-lg-4.col-sm-6.mb-4
-                        // Portfolio item 2
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal2')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/2.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Explore
-                                .portfolio-caption-subheading.text-muted Graphic Design
-                    .col-lg-4.col-sm-6.mb-4
-                        // Portfolio item 3
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal3')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/3.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Finish
-                                .portfolio-caption-subheading.text-muted Identity
-                    .col-lg-4.col-sm-6.mb-4.mb-lg-0
-                        // Portfolio item 4
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal4')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/4.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Lines
-                                .portfolio-caption-subheading.text-muted Branding
-                    .col-lg-4.col-sm-6.mb-4.mb-sm-0
-                        // Portfolio item 5
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal5')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/5.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Southwest
-                                .portfolio-caption-subheading.text-muted Website Design
-                    .col-lg-4.col-sm-6
-                        // Portfolio item 6
-                        .portfolio-item
-                            a.portfolio-link(data-bs-toggle='modal', href='#portfolioModal6')
-                                .portfolio-hover
-                                    .portfolio-hover-content
-                                        i.fas.fa-plus.fa-3x
-                                img.img-fluid(src='assets/img/portfolio/6.jpg', alt='...')
-                            .portfolio-caption
-                                .portfolio-caption-heading Window
-                                .portfolio-caption-subheading.text-muted Photography
-
         // About
-        section#about.page-section
+        section#workflow.page-section
             .container
                 .text-center
-                    h2.section-heading.text-uppercase About
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
+                    h2.section-heading.text-uppercase Workflow
+                    h3.section-subheading.text-muted A detailed description of application flow
                 ul.timeline
                     li
                         .timeline-image
                             img.rounded-circle.img-fluid(src='assets/img/about/1.jpg', alt='...')
                         .timeline-panel
                             .timeline-heading
-                                h4 2009-2011
-                                h4.subheading Our Humble Beginnings
+                                h4 UI/Frontend
+                                h6.subheading Collecting user inputs (html, pug, jquery, bootstrap, selectize)
                             .timeline-body
-                                p.text-muted
-                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
+                                p.text-dark.text-lg-center
+                                    | Crypto currencies :-
+                                p.text-muted.text-lg-start
+                                    | you can select single/multiple currencies. Graph is shown for all the selected currencies. Hence, enabling user for easy comparision.
+                                p.text-dark.text-lg-center
+                                    | Days (0 - 250):-
+                                p.text-muted.text-lg-start
+                                    | This defines how many day's worth of graph would you like to view.
+                                p.text-muted.text-lg-start
+                                    | today = 0 days with historic type
+                                p.text-muted.text-lg-start
+                                    | yesterday = 1 days with historic type
+                                p.text-muted.text-lg-start
+                                    | tomorrow = 1 days with prediction type
+                                p.text-muted.text-lg-start
+                                    | Note: Error is shown as 0 is not allowed with prediction type as it is considered as today
+                                p.text-dark.text-lg-center
+                                    | Action Type :-
+                                p.text-muted.text-lg-start
+                                    | Historic Data = this provides data from today to previous n days. n being the numberOfDays selected in earlier form field.
+                                p.text-muted.text-lg-start
+                                    | Predictions = this provides data from today to previous n days. n being the numberOfDays selected in earlier form field.
                     li.timeline-inverted
                         .timeline-image
                             img.rounded-circle.img-fluid(src='assets/img/about/2.jpg', alt='...')
                         .timeline-panel
                             .timeline-heading
-                                h4 March 2011
-                                h4.subheading An Agency is Born
+                                h4 Backend
+                                h6.subheading Fetch and Predict future price (Python3, flask, pandas, yfinance)
                             .timeline-body
-                                p.text-muted
-                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
+                                p.text-dark.text-lg-start
+                                    | For each crypto currencies selected in the list, check the type of action needs to be performed.
+                                p.text-muted.text-lg-start
+                                    | Historic Data :- Get previous data from yahoo-finance
+                                p.text-muted.text-lg-start
+                                    | Prediction :- Prepare the historic data for modelling, feed it to the net and train the model.
+                                p.text-muted.text-lg-start
+                                    | The model predicts crypto prices for given number of days.
+                                p.text-dark.text-lg-start
+                                    | Note:
+                                p.text-muted.text-lg-start
+                                    | We are using pre-designed MLP Neural Network-Tensorflow (3- hidden levels). The performance can be optimized by changing the network structure or by changing to LSTM or RNN network.
                     li
                         .timeline-image
                             img.rounded-circle.img-fluid(src='assets/img/about/3.jpg', alt='...')
                         .timeline-panel
                             .timeline-heading
-                                h4 December 2015
-                                h4.subheading Transition to Full Service
+                                h4 UI/Frontend
+                                h4.subheading Displaying the graph (axischartjs,bootstrap,jquery,lodash,moment)
                             .timeline-body
-                                p.text-muted
-                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
+                                p.text-muted.text-lg-start
+                                    | X-axis : dates
+                                p.text-muted.text-lg-start
+                                    | Y-axis : currency prices
+                                p.text-dark.text-lg-start
+                                    | Note:
+                                p.text-muted.text-lg-start
+                                    | Loading spinner will be visible untill the graph is generated
+                                p.text-muted.text-lg-start
+                                    | Hovering over the graph lines will show price values for all the visible currencies
                     li.timeline-inverted
                         .timeline-image
-                            img.rounded-circle.img-fluid(src='assets/img/about/4.jpg', alt='...')
-                        .timeline-panel
-                            .timeline-heading
-                                h4 July 2020
-                                h4.subheading Phase Two Expansion
-                            .timeline-body
-                                p.text-muted
-                                    | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Sunt ut voluptatum eius sapiente, totam reiciendis temporibus qui quibusdam, recusandae sit vero unde, sed, incidunt et ea quo dolore laudantium consectetur!
-                    li.timeline-inverted
-                        .timeline-image
+                            a.stretched-link(href='#compare')
                             h4
-                                | Be Part
+                                | Start
                                 br
-                                | Of Our
-                                br
-                                | Story!
+                                | Comparing
 
         // Team
         section#team.page-section.bg-light
             .container
                 .text-center
                     h2.section-heading.text-uppercase Our Amazing Team
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
+                    h3.section-subheading.text-muted Brains and Hands that made this application come to life.
                 .row
-                    .col-lg-4
+                    .col-lg-3
                         .team-member
                             img.mx-auto.rounded-circle(src='assets/img/team/1.jpg', alt='...')
                             h4 Parveen Anand
@@ -259,7 +214,7 @@ html(lang='en')
                                 i.fab.fa-facebook-f
                             a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Parveen Anand LinkedIn Profile')
                                 i.fab.fa-linkedin-in
-                    .col-lg-4
+                    .col-lg-3
                         .team-member
                             img.mx-auto.rounded-circle(src='assets/img/team/2.jpg', alt='...')
                             h4 Diana Petersen
@@ -270,7 +225,18 @@ html(lang='en')
                                 i.fab.fa-facebook-f
                             a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Diana Petersen LinkedIn Profile')
                                 i.fab.fa-linkedin-in
-                    .col-lg-4
+                    .col-lg-3
+                        .team-member
+                            img.mx-auto.rounded-circle(src='assets/img/team/3.jpg', alt='...')
+                            h4 Larry Parker
+                            p.text-muted Lead Developer
+                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker Twitter Profile')
+                                i.fab.fa-twitter
+                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker Facebook Profile')
+                                i.fab.fa-facebook-f
+                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker LinkedIn Profile')
+                                i.fab.fa-linkedin-in
+                    .col-lg-3
                         .team-member
                             img.mx-auto.rounded-circle(src='assets/img/team/3.jpg', alt='...')
                             h4 Larry Parker
@@ -284,31 +250,14 @@ html(lang='en')
                 .row
                     .col-lg-8.mx-auto.text-center
                         p.large.text-muted
-                            | Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aut eaque, laboriosam veritatis, quos non quis ad perspiciatis, totam corporis ea, alias ut unde.
-
-        // Clients
-        div.py-5
-            .container
-                .row.align-items-center
-                    .col-md-3.col-sm-6.my-3
-                        a(href='#!')
-                            img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/microsoft.svg', alt='...', aria-label='Microsoft Logo')
-                    .col-md-3.col-sm-6.my-3
-                        a(href='#!')
-                            img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/google.svg', alt='...', aria-label='Google Logo')
-                    .col-md-3.col-sm-6.my-3
-                        a(href='#!')
-                            img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/facebook.svg', alt='...', aria-label='Facebook Logo')
-                    .col-md-3.col-sm-6.my-3
-                        a(href='#!')
-                            img.img-fluid.img-brand.d-block.mx-auto(src='assets/img/logos/ibm.svg', alt='...', aria-label='IBM Logo')
+                            | We all are final year Computer Science students in Sapthagiri College. Feel free to reach out to us for any information regarding the app.
 
         // Contact
         section#contact.page-section
             .container
                 .text-center
                     h2.section-heading.text-uppercase Contact Us
-                    h3.section-subheading.text-muted Lorem ipsum dolor sit amet consectetur.
+                    h3.section-subheading.text-muted Answer to your queries are just a click away. Start typing!!
 
                 // * * * * * * * * * * * * * * *
                 // * * SB Forms Contact Form * *
@@ -391,13 +340,12 @@ html(lang='en')
                     // Submit Button
                     .text-center
                         button#submitButton.btn.btn-primary.btn-xl.text-uppercase.disabled(type='submit') Send Message
-
         // Footer
         footer.footer.py-4
             .container
                 .row.align-items-center
                     .col-lg-4.text-lg-start
-                        | Copyright &copy; Your Website 2022
+                        | Copyright &copy; C3 2022
                     .col-lg-4.my-3.my-lg-0
                         a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Twitter')
                             i.fab.fa-twitter
