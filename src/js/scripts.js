@@ -200,7 +200,7 @@ var render_comparision_chart = function (data) {
         }
     };
 
-    var chart = new ApexCharts(document.querySelector("#chartForComparision"), options);
+    var chart = new ApexCharts(document.querySelector("#chartForComparison"), options);
     chart.render();
 }
 
@@ -214,9 +214,15 @@ var toggleLoading = function (data) {
     $("#chart").toggleClass("visually-hidden")
 }
 
-$(document).ready(function () {
+var toggleComparisonLoading = function (data) {
+    $("#CompareDropdownButton").toggleClass("visually-hidden")
+    $("#CompareDropdownLoadingButton").toggleClass("visually-hidden")
+    $("#CompareDropdownLoadingButton").text(data)
+    $("#CompareLoadingSpinner").toggleClass("visually-hidden")
+    $("#chartForComparison").toggleClass("visually-hidden")
+}
 
-    $('#stock-checkboxes').multiselect();
+$(document).ready(function () {
 
     $('#PredictDropdownMenu a').on('click', function () {
         var cryptoCurrency = ($(this).text());
@@ -226,7 +232,6 @@ $(document).ready(function () {
                 url: "http://127.0.0.1:8080/predict",
                 data: {name: cryptoCurrency},
                 success: function (data) {
-                    console.log(data)
                     toggleLoading(cryptoCurrency)
                     render_chart(data)
                 },
@@ -238,11 +243,12 @@ $(document).ready(function () {
     });
     $('#CompareDropdownMenu a').on('click', function () {
         var cryptoCurrency = ($(this).text());
-        toggleLoading(cryptoCurrency)
+        toggleComparisonLoading(cryptoCurrency)
         $.get(
             {
                 url: "http://127.0.0.1:8080/predict-all",
                 success: function (data) {
+                    toggleComparisonLoading(data)
                     render_comparision_chart(data)
                 },
                 failure: function (data) {
