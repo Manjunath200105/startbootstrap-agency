@@ -17,12 +17,16 @@ html(lang='en')
         script(src='https://use.fontawesome.com/releases/v6.1.0/js/all.js', crossorigin='anonymous')
         script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js', crossorigin='anonymous')
         script(src='https://cdn.jsdelivr.net/npm/apexcharts', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/sifter/0.5.4/sifter.min.js', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/microplugin/0.0.3/microplugin.min.js', crossorigin='anonymous')
+        script(src='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/js/selectize.min.js', crossorigin='anonymous')
 
 
 
         // Google fonts
         link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
         link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', rel='stylesheet', type='text/css')
+        link(href='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/css/selectize.bootstrap5.min.css', rel='stylesheet', type='text/css')
 
         // Core theme CSS (includes Bootstrap)
         link(href='css/styles.css', rel='stylesheet')
@@ -130,15 +134,41 @@ html(lang='en')
         // Compare
         section#compare.page-section.bg-light
             .container
-                .dropdown
-                    button#CompareDropdownButton.btn.btn-secondary.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false") --select--
-                    ul#CompareDropdownMenu.dropdown-menu(aria-labelledby="PredictDropdownButton")
-                        li
-                            a.dropdown-item(href="#compare") Historic data
-                        li
-                            a.dropdown-item(href="#compare") Prediction
-                button#CompareDropdownLoadingButton.btn.btn-secondary.visually-hidden.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false",disabled="true")
-                    span.spinner-border.spinner-border-sm(role='status',aria-hidden='true')
+                //.dropdown
+                //    button#CompareDropdownButton.btn.btn-secondary.dropdown-toggle(type="button" data-bs-toggle="dropdown" aria-expanded="false") --select--
+                //    ul#CompareDropdownMenu.dropdown-menu(aria-labelledby="PredictDropdownButton")
+                //        li
+                //            a.dropdown-item(href="#compare") Past data
+                //        li
+                //            a.dropdown-item(href="#compare") Predictions
+                form#graph-details
+                    .type
+                        label(for="type") Calculation Type
+                        select#type(name="type")
+                            option(value="past_data") Past Data
+                            option(value="predictions") Predictions
+                    .currency
+                        label(for="currency") Crypto Currencies
+                            select#currency(multiple name="currency")
+                                option(value="BTC-USD") BTC-USD
+                                option(value="BCH-USD") BCH-USD
+                                option(value="XMR-USD") XMR-USD
+                                option(value="ZEC-USD") ZEC-USD
+                                option(value="XRP-USD") XRP-USD
+                                option(value="XLM-USD") XLM-USD
+                                option(value="DASH-USD") DASH-USD
+                                option(value="BTG-USD") BTG-USD
+                                option(value="XRP-USD") XRP-USD
+                                option(value="TRX-USD") TRX-USD
+                                option(value="ETC-USD") ETC-USD
+                                option(value="MIOTA-USD") MIOTA-USD
+                                option(value="LTC-USD") LTC-USD
+                                option(value="ADA-USD") ADA-USD
+                                option(value="XEM-USD") XEM-USD
+                    .days
+                        label Number of days
+                            input#noOfDays(type="number" name="noOfDays" min="0" max="250")
+                    button.btn.btn-primary(type="submit") Submit
                 div#CompareLoadingSpinner.d-flex.align-items-center.visually-hidden
                     strong Fetching data.....
                     div.spinner-border.ms-auto(role='status',aria-hidden="true")

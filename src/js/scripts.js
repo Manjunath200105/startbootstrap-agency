@@ -48,114 +48,54 @@ window.addEventListener('DOMContentLoaded', event => {
     });
 });
 
-var get_date_range = function (numberOfDays) {
+var get_date_range = function (numberOfDays, type) {
+    if (type == 'past_data') {
+        return _.range(-Math.abs(numberOfDays), 0).map((current, index, range) => {
+            return moment().add(current, 'day').format('DD-MM-YYYY')
+        })
+    }
     return _.range(0, numberOfDays).map((current, index, range) => {
         return moment().add(current, 'day').format('DD-MM-YYYY')
     })
 }
 
 
-var render_chart = function (data) {
-    var predictions = data['predictions']
+// var render_chart = function (data) {
+//     var predictions = data['predictions']
+//     var options = {
+//         chart: {
+//             type: 'line'
+//         },
+//         series: [{
+//             name: 'stock-price',
+//             data: predictions
+//         }],
+//         xaxis: {
+//             categories: get_date_range(predictions.length)
+//         }
+//     }
+//
+//     var chart = new ApexCharts(document.querySelector("#chart"), options);
+//
+//     chart.render();
+// }
+
+var render_comparision_chart = function (data, type) {
+    var comparisonType = _.snakeCase(type).toLowerCase();
+    var currencyList = Object.keys(data)
     var options = {
-        chart: {
-            type: 'line'
-        },
-        series: [{
-            name: 'stock-price',
-            data: predictions
-        }],
-        xaxis: {
-            categories: get_date_range(predictions.length)
-        }
-    }
-
-    var chart = new ApexCharts(document.querySelector("#chart"), options);
-
-    chart.render();
-}
-
-var render_comparision_chart = function (data) {
-    var currencyList = ["BTC-USD", "BCH-USD", "XMR-USD", "ZEC-USD", "XRP-USD", "XLM-USD", "DASH-USD",
-        "BTG-USD", "TRX-USD", "ETC-USD", "MIOTA-USD", "LTC-USD", "ADA-USD", "XEM-USD"]
-    var options = {
-        series: [
-            {
-                name: "BTC-USD",
-                data: data["BTC-USD"]["predictions"]
-            },
-            {
-                name: "BCH-USD",
-                data: data["BCH-USD"]["predictions"]
-            },
-            {
-                name: "XMR-USD",
-                data: data["XMR-USD"]["predictions"]
-            },
-            {
-                name: "ZEC-USD",
-                data: data["ZEC-USD"]["predictions"]
-            },
-            {
-                name: "XLM-USD",
-                data: data["XLM-USD"]["predictions"]
-            },
-            {
-                name: "DASH-USD",
-                data: data["DASH-USD"]["predictions"]
-            },
-            {
-                name: "BTG-USD",
-                data: data["BTG-USD"]["predictions"]
-            },
-            {
-                name: "XRP-USD",
-                data: data["XRP-USD"]["predictions"]
-            },
-            {
-                name: "TRX-USD",
-                data: data["TRX-USD"]["predictions"]
-            },
-            {
-                name: "ETC-USD",
-                data: data["ETC-USD"]["predictions"]
-            },
-            {
-                name: "MIOTA-USD",
-                data: data["MIOTA-USD"]["predictions"]
-            },
-            {
-                name: "LTC-USD",
-                data: data["LTC-USD"]["predictions"]
-            },
-            {
-                name: "ADA-USD",
-                data: data["ADA-USD"]["predictions"]
-            },
-            {
-                name: "XEM-USD",
-                data: data["XEM-USD"]["predictions"]
+        series: currencyList.map(function (currency) {
+            return {
+                name: currency,
+                data: data[currency][comparisonType]
             }
-        ],
+        }),
         chart: {
-            // height: 350,
             type: 'line',
-            // zoom: {
-            //     enabled: true
-            // },
+            toolbar: {
+                show: false
+            },
         },
-        // dataLabels: {
-        //     enabled: false
-        // },
-        // stroke: {
-        //     width: [5, 7, 5],
-        //     curve: 'straight',
-        //     dashArray: [0, 8, 5]
-        // },
-        // title: {
-        //     text: 'Page Statistics',
-        //     align: 'left'
-        // },
         legend: {
             tooltipHoverFormatter: function (val, opts) {
                 return val + ' - ' + opts.w.globals.series[opts.seriesIndex][opts.dataPointIndex] + ''
@@ -168,33 +108,8 @@ var render_comparision_chart = function (data) {
             }
         },
         xaxis: {
-            categories: get_date_range(data["BTC-USD"]["predictions"].length),
+            categories: get_date_range(data[currencyList[0]][comparisonType].length, type),
         },
-        // tooltip: {
-        //     y: [
-        //         {
-        //             title: {
-        //                 formatter: function (val) {
-        //                     return val + " (mins)"
-        //                 }
-        //             }
-        //         },
-        //         {
-        //             title: {
-        //                 formatter: function (val) {
-        //                     return val + " per session"
-        //                 }
-        //             }
-        //         },
-        //         {
-        //             title: {
-        //                 formatter: function (val) {
-        //                     return val;
-        //                 }
-        //             }
-        //         }
-        //     ]
-        // },
         grid: {
             borderColor: '#f1f1f1',
         }
@@ -205,24 +120,65 @@ var render_comparision_chart = function (data) {
 }
 
 var toggleLoading = function (data) {
-    $("#PredictDropdownButton").toggleClass("visually-hidden")
-    $("#PredictDropdownLoadingButton").toggleClass("visually-hidden")
-    $("#PredictDropdownLoadingButton").text(data)
+    $("#PredictDropdownButton").toggleClass("disabled").text(data)
     $("#PredictionLoadingSpinner").toggleClass("visually-hidden")
     $("#stockName").toggleClass("visually-hidden")
     $("#stockName h2").text(data)
     $("#chart").toggleClass("visually-hidden")
 }
 
-var toggleComparisonLoading = function (data) {
-    $("#CompareDropdownButton").toggleClass("visually-hidden")
-    $("#CompareDropdownLoadingButton").toggleClass("visually-hidden")
-    $("#CompareDropdownLoadingButton").text(data)
-    $("#CompareLoadingSpinner").toggleClass("visually-hidden")
-    $("#chartForComparison").toggleClass("visually-hidden")
+var toggleLoadingIcon = function () {
+    $("#graph-details").toggleClass("visually-hidden");
+    $("#CompareLoadingSpinner").toggleClass("visually-hidden");
+    if ($('#chartForComparison').length === 0) {
+        $('#compare .container').append('<div class=\"apex-charts\" id=\"chartForComparison\"</div>');
+    } else {
+        $("#chartForComparison").remove();
+    }
 }
 
 $(document).ready(function () {
+    $("select").selectize({
+        plugins: ["remove_button"],
+        delimiter: ",",
+        persist: false,
+        create: function (input) {
+            return {
+                value: input,
+                text: input,
+            };
+        },
+    });
+
+
+    $("#graph-details").submit(function (event) {
+        var comparisonType = $('#type').val()
+        var payload = {
+            "type": comparisonType,
+            "currency": $('#currency').val().join(","),
+            "noOfDays": $('#noOfDays').val()
+        }
+
+        toggleLoadingIcon()
+
+        $.post(
+            {
+                url: "http://127.0.0.1:8080/predict",
+                dataType: "json",
+                data: payload,
+                success: function (data) {
+                    toggleLoadingIcon()
+                    render_comparision_chart(data, comparisonType)
+                },
+                failure: function (data) {
+                    toggleLoading(comparisonType)
+                }
+            });
+
+        // alert( "Handler for .submit() called." );
+        event.preventDefault();
+    });
+
 
     $('#PredictDropdownMenu a').on('click', function () {
         var cryptoCurrency = ($(this).text());
@@ -242,14 +198,14 @@ $(document).ready(function () {
             });
     });
     $('#CompareDropdownMenu a').on('click', function () {
-        var cryptoCurrency = ($(this).text());
-        toggleComparisonLoading(cryptoCurrency)
+        var comparisonType = ($(this).text());
+        toggleComparisonLoading(comparisonType)
         $.get(
             {
                 url: "http://127.0.0.1:8080/predict-all",
                 success: function (data) {
-                    toggleComparisonLoading(data)
-                    render_comparision_chart(data)
+                    toggleComparisonLoading(comparisonType)
+                    render_comparision_chart(data, comparisonType)
                 },
                 failure: function (data) {
                     console.log(data)
