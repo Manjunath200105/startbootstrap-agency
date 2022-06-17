@@ -27,6 +27,7 @@ html(lang='en')
         link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
         link(href='https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700', rel='stylesheet', type='text/css')
         link(href='https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/css/selectize.bootstrap5.min.css', rel='stylesheet', type='text/css')
+        link(href='"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css', rel='stylesheet', type='text/html')
 
         // Core theme CSS (includes Bootstrap)
         link(href='css/styles.css', rel='stylesheet')
@@ -37,16 +38,16 @@ html(lang='en')
         nav#mainNav.navbar.navbar-expand-lg.navbar-dark.fixed-top
             .container
                 a.navbar-brand(href='#page-top')
-                    img(src='assets/img/navbar-logo.svg', alt='...')
+                    img(src='assets/img/navbar-logo.svg ' alt='...' style="height: 3rem;")
                 button.navbar-toggler(type='button', data-bs-toggle='collapse', data-bs-target='#navbarResponsive', aria-controls='navbarResponsive', aria-expanded='false', aria-label='Toggle navigation')
                     | Menu
                     i.fas.fa-bars.ms-1
                 #navbarResponsive.collapse.navbar-collapse
                     ul.navbar-nav.text-uppercase.ms-auto.py-4.py-lg-0
                         li.nav-item
-                            a.nav-link(href='#compare') Compare
+                            a.nav-link(href='#compare') Predict
                         li.nav-item
-                            a.nav-link(href='#workflow') WorkFlow
+                            a.nav-link(href='#workflow') About
                         li.nav-item
                             a.nav-link(href='#team') Team
                         li.nav-item
@@ -54,10 +55,12 @@ html(lang='en')
         // Masthead
         header.masthead
             .container
-                .masthead-subheading Welcome To C3
-                .masthead-heading.text-uppercase Crypto Currency Comparer
-                a.btn.btn-primary.btn-xl.text-uppercase(href='#workflow') understand the app
-                a.btn.btn-primary.btn-xl.text-uppercase(href='#compare') Start Comparing
+                .masthead-subheading Welcome To CP2
+                div(style='width:100%')
+                    h1.text-uppercase(style='display:inline') Comparer
+                    img(src='assets/img/navbar-logo.svg ' alt='...' style="height:3rem; display:inline; margin-top: -1rem; margin-right: 0.5rem; margin-left: 0.5rem;")
+                    h1.text-uppercase(style='display:inline') Predictor
+                a.btn.btn-primary.btn-xl.text-uppercase(href='#compare', style="margin-top: 1rem") Start Comparing
 
 
         div#alert-modal.modal.fade
@@ -75,7 +78,7 @@ html(lang='en')
         section#compare.page-section
             .container
                 div#stockName.text-center
-                    h2.section-heading.text-uppercase Crypto Currency Comparer
+                    h2.section-heading.text-uppercase Crypto Currency Price Predictor
                     h3.section-subheading.text-muted Please fill and submit the form to view the comparison
                 form#graph-details.row.row-cols-lg-auto.g-3.align-items-center
                     .col-12
@@ -100,7 +103,7 @@ html(lang='en')
                     .col-12
                         label.visually-hidden(for="noOfDays") Number of days
                         input#noOfDays.form-control(type="number" name="noOfDays" min="0" max="250" placeholder="days")
-                    .col-12
+                    .col-12(style="width: 15%;")
                         label.visually-hidden(for="type") Action Type
                         select#type.select( name="type")
                             option(value="" selected disabled) Action Type
@@ -117,8 +120,8 @@ html(lang='en')
         section#workflow.page-section
             .container
                 .text-center
-                    h2.section-heading.text-uppercase Workflow
-                    h3.section-subheading.text-muted A detailed description of application flow
+                    h2.section-heading.text-uppercase About
+                    h3.section-subheading.text-muted A detailed description of application
                 ul.timeline
                     li
                         .timeline-image
@@ -147,9 +150,9 @@ html(lang='en')
                                 p.text-dark.text-lg-center
                                     | Action Type :-
                                 p.text-muted.text-lg-start
-                                    | Historic Data = this provides data from today to previous n days. n being the numberOfDays selected in earlier form field.
+                                    | Historic Data = this provides data from today to previous (n) days. n being the numberOfDays selected in earlier form field.
                                 p.text-muted.text-lg-start
-                                    | Predictions = this provides data from today to previous n days. n being the numberOfDays selected in earlier form field.
+                                    | Predictions = this provides data from tomorrow to (n-1) future days. n being the numberOfDays selected in earlier form field.
                     li.timeline-inverted
                         .timeline-image
                             img.rounded-circle.img-fluid(src='assets/img/about/2.jpg', alt='...')
@@ -176,7 +179,9 @@ html(lang='en')
                         .timeline-panel
                             .timeline-heading
                                 h4 UI/Frontend
-                                h4.subheading Displaying the graph (axischartjs,bootstrap,jquery,lodash,moment)
+                                h4.subheading Displaying the graph
+                                h4.subheading (axischartjs,bootstrap,jquery,
+                                h4.subheading lodash,moment)
                             .timeline-body
                                 p.text-muted.text-lg-start
                                     | X-axis : dates
@@ -191,7 +196,7 @@ html(lang='en')
                     li.timeline-inverted
                         .timeline-image
                             a.stretched-link(href='#compare')
-                            h4
+                            h4(style="margin-top: 50px;color: #212529;")
                                 | Start
                                 br
                                 | Comparing
@@ -206,51 +211,51 @@ html(lang='en')
                     .col-lg-3
                         .team-member
                             img.mx-auto.rounded-circle(src='assets/img/team/1.jpg', alt='...')
-                            h4 Parveen Anand
-                            p.text-muted Lead Designer
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Parveen Anand Twitter Profile')
+                            h4 Varun R
+                            p.text-muted Designer
+                            a.btn.btn-dark.btn-social.mx-2(href='https://github.com/Manjunath200105/crypto_predictor_app', target="_blank", aria-label='Varun R  Twitter Profile')
                                 i.fab.fa-twitter
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Parveen Anand Facebook Profile')
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Parveen Anand Facebook Profile')
                                 i.fab.fa-facebook-f
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Parveen Anand LinkedIn Profile')
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Parveen Anand LinkedIn Profile')
                                 i.fab.fa-linkedin-in
                     .col-lg-3
                         .team-member
                             img.mx-auto.rounded-circle(src='assets/img/team/2.jpg', alt='...')
-                            h4 Diana Petersen
-                            p.text-muted Lead Marketer
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Diana Petersen Twitter Profile')
+                            h4 Nithin S M
+                            p.text-muted Developer
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Diana Petersen Twitter Profile')
                                 i.fab.fa-twitter
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Diana Petersen Facebook Profile')
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Diana Petersen Facebook Profile')
                                 i.fab.fa-facebook-f
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Diana Petersen LinkedIn Profile')
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Diana Petersen LinkedIn Profile')
                                 i.fab.fa-linkedin-in
                     .col-lg-3
                         .team-member
                             img.mx-auto.rounded-circle(src='assets/img/team/3.jpg', alt='...')
-                            h4 Larry Parker
-                            p.text-muted Lead Developer
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker Twitter Profile')
+                            h4 Naveen S R
+                            p.text-muted Developer
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Larry Parker Twitter Profile')
                                 i.fab.fa-twitter
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker Facebook Profile')
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Larry Parker Facebook Profile')
                                 i.fab.fa-facebook-f
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker LinkedIn Profile')
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Larry Parker LinkedIn Profile')
                                 i.fab.fa-linkedin-in
                     .col-lg-3
                         .team-member
-                            img.mx-auto.rounded-circle(src='assets/img/team/3.jpg', alt='...')
-                            h4 Larry Parker
-                            p.text-muted Lead Developer
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker Twitter Profile')
+                            img.mx-auto.rounded-circle(src='assets/img/team/4.jpg', alt='...')
+                            h4 Manjunath M
+                            p.text-muted Designer
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Larry Parker Twitter Profile')
                                 i.fab.fa-twitter
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker Facebook Profile')
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Larry Parker Facebook Profile')
                                 i.fab.fa-facebook-f
-                            a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Larry Parker LinkedIn Profile')
+                            a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Larry Parker LinkedIn Profile')
                                 i.fab.fa-linkedin-in
                 .row
                     .col-lg-8.mx-auto.text-center
                         p.large.text-muted
-                            | We all are final year Computer Science students in Sapthagiri College. Feel free to reach out to us for any information regarding the app.
+                            | We all are final year Computer Science students in Sapthagiri College of engineering. Feel free to reach out to us for any information regarding the app.
 
         // Contact
         section#contact.page-section
@@ -347,11 +352,11 @@ html(lang='en')
                     .col-lg-4.text-lg-start
                         | Copyright &copy; C3 2022
                     .col-lg-4.my-3.my-lg-0
-                        a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Twitter')
+                        a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Twitter')
                             i.fab.fa-twitter
-                        a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='Facebook')
+                        a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='Facebook')
                             i.fab.fa-facebook-f
-                        a.btn.btn-dark.btn-social.mx-2(href='#!', aria-label='LinkedIn')
+                        a.btn.btn-dark.btn-social.mx-2(href='#!',target="_blank", aria-label='LinkedIn')
                             i.fab.fa-linkedin-in
                     .col-lg-4.text-lg-end
                         a.link-dark.text-decoration-none.me-3(href='#!') Privacy Policy
@@ -379,3 +384,7 @@ html(lang='en')
         // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *
 
         script(src='https://cdn.startbootstrap.com/sb-forms-latest.js')
+        style
+            .icon-green { color: green; }
+            .icon-red { color: red; }
+            .icon-large { font-size: 25px;}

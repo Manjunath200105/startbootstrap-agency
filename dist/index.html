@@ -19,6 +19,7 @@
         <link href="https://fonts.googleapis.com/css?family=Montserrat:400,700" rel="stylesheet" type="text/css" />
         <link href="https://fonts.googleapis.com/css?family=Roboto+Slab:400,100,300,700" rel="stylesheet" type="text/css" />
         <link href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.13.5/css/selectize.bootstrap5.min.css" rel="stylesheet" type="text/css" />
+        <link href='"https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css' rel="stylesheet" type="text/html" />
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="css/styles.css" rel="stylesheet" />
     </head>
@@ -26,15 +27,15 @@
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
             <div class="container">
-                <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg" alt="..." /></a>
+                <a class="navbar-brand" href="#page-top"><img src="assets/img/navbar-logo.svg " alt="..." style="height: 3rem" /></a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
                     Menu
                     <i class="fas fa-bars ms-1"></i>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#compare">Compare</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#workflow">WorkFlow</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#compare">Predict</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#workflow">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
                     </ul>
@@ -44,10 +45,13 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Welcome To C3</div>
-                <div class="masthead-heading text-uppercase">Crypto Currency Comparer</div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#workflow">understand the app</a>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#compare">Start Comparing</a>
+                <div class="masthead-subheading">Welcome To CP2</div>
+                <div style="width: 100%">
+                    <h1 class="text-uppercase" style="display: inline">Comparer</h1>
+                    <img src="assets/img/navbar-logo.svg " alt="..." style="height: 3rem; display: inline; margin-top: -1rem; margin-right: 0.5rem; margin-left: 0.5rem" />
+                    <h1 class="text-uppercase" style="display: inline">Predictor</h1>
+                </div>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#compare" style="margin-top: 1rem">Start Comparing</a>
             </div>
         </header>
         <div class="modal fade" id="alert-modal">
@@ -67,7 +71,7 @@
         <section class="page-section" id="compare">
             <div class="container">
                 <div class="text-center" id="stockName">
-                    <h2 class="section-heading text-uppercase">Crypto Currency Comparer</h2>
+                    <h2 class="section-heading text-uppercase">Crypto Currency Price Predictor</h2>
                     <h3 class="section-subheading text-muted">Please fill and submit the form to view the comparison</h3>
                 </div>
                 <form class="row row-cols-lg-auto g-3 align-items-center" id="graph-details">
@@ -96,7 +100,7 @@
                         <label class="visually-hidden" for="noOfDays">Number of days</label>
                         <input class="form-control" id="noOfDays" type="number" name="noOfDays" min="0" max="250" placeholder="days" />
                     </div>
-                    <div class="col-12">
+                    <div class="col-12" style="width: 15%">
                         <label class="visually-hidden" for="type">Action Type</label>
                         <select class="select" id="type" name="type">
                             <option value="" selected disabled>Action Type</option>
@@ -117,8 +121,8 @@
         <section class="page-section" id="workflow">
             <div class="container">
                 <div class="text-center">
-                    <h2 class="section-heading text-uppercase">Workflow</h2>
-                    <h3 class="section-subheading text-muted">A detailed description of application flow</h3>
+                    <h2 class="section-heading text-uppercase">About</h2>
+                    <h3 class="section-subheading text-muted">A detailed description of application</h3>
                 </div>
                 <ul class="timeline">
                     <li>
@@ -138,8 +142,8 @@
                                 <p class="text-muted text-lg-start">tomorrow = 1 days with prediction type</p>
                                 <p class="text-muted text-lg-start">Note: Error is shown as 0 is not allowed with prediction type as it is considered as today</p>
                                 <p class="text-dark text-lg-center">Action Type :-</p>
-                                <p class="text-muted text-lg-start">Historic Data = this provides data from today to previous n days. n being the numberOfDays selected in earlier form field.</p>
-                                <p class="text-muted text-lg-start">Predictions = this provides data from today to previous n days. n being the numberOfDays selected in earlier form field.</p>
+                                <p class="text-muted text-lg-start">Historic Data = this provides data from today to previous (n) days. n being the numberOfDays selected in earlier form field.</p>
+                                <p class="text-muted text-lg-start">Predictions = this provides data from tomorrow to (n-1) future days. n being the numberOfDays selected in earlier form field.</p>
                             </div>
                         </div>
                     </li>
@@ -165,7 +169,9 @@
                         <div class="timeline-panel">
                             <div class="timeline-heading">
                                 <h4>UI/Frontend</h4>
-                                <h4 class="subheading">Displaying the graph (axischartjs,bootstrap,jquery,lodash,moment)</h4>
+                                <h4 class="subheading">Displaying the graph</h4>
+                                <h4 class="subheading">(axischartjs,bootstrap,jquery,</h4>
+                                <h4 class="subheading">lodash,moment)</h4>
                             </div>
                             <div class="timeline-body">
                                 <p class="text-muted text-lg-start">X-axis : dates</p>
@@ -179,7 +185,7 @@
                     <li class="timeline-inverted">
                         <div class="timeline-image">
                             <a class="stretched-link" href="#compare"></a>
-                            <h4>
+                            <h4 style="margin-top: 50px; color: #212529">
                                 Start
                                 <br />
                                 Comparing
@@ -200,46 +206,46 @@
                     <div class="col-lg-3">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets/img/team/1.jpg" alt="..." />
-                            <h4>Parveen Anand</h4>
-                            <p class="text-muted">Lead Designer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <h4>Varun R</h4>
+                            <p class="text-muted">Designer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="https://github.com/Manjunath200105/crypto_predictor_app" target="_blank" aria-label="Varun R  Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Parveen Anand Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Parveen Anand LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets/img/team/2.jpg" alt="..." />
-                            <h4>Diana Petersen</h4>
-                            <p class="text-muted">Lead Marketer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <h4>Nithin S M</h4>
+                            <p class="text-muted">Developer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Diana Petersen Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Diana Petersen Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Diana Petersen LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="team-member">
                             <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
-                            <h4>Larry Parker</h4>
-                            <p class="text-muted">Lead Developer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <h4>Naveen S R</h4>
+                            <p class="text-muted">Developer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                     <div class="col-lg-3">
                         <div class="team-member">
-                            <img class="mx-auto rounded-circle" src="assets/img/team/3.jpg" alt="..." />
-                            <h4>Larry Parker</h4>
-                            <p class="text-muted">Lead Developer</p>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
-                            <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
+                            <img class="mx-auto rounded-circle" src="assets/img/team/4.jpg" alt="..." />
+                            <h4>Manjunath M</h4>
+                            <p class="text-muted">Designer</p>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Larry Parker Twitter Profile"><i class="fab fa-twitter"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Larry Parker Facebook Profile"><i class="fab fa-facebook-f"></i></a>
+                            <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Larry Parker LinkedIn Profile"><i class="fab fa-linkedin-in"></i></a>
                         </div>
                     </div>
                 </div>
                 <div class="row">
-                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">We all are final year Computer Science students in Sapthagiri College. Feel free to reach out to us for any information regarding the app.</p></div>
+                    <div class="col-lg-8 mx-auto text-center"><p class="large text-muted">We all are final year Computer Science students in Sapthagiri College of engineering. Feel free to reach out to us for any information regarding the app.</p></div>
                 </div>
             </div>
         </section>
@@ -313,9 +319,9 @@
                 <div class="row align-items-center">
                     <div class="col-lg-4 text-lg-start">Copyright &copy; C3 2022</div>
                     <div class="col-lg-4 my-3 my-lg-0">
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
-                        <a class="btn btn-dark btn-social mx-2" href="#!" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a class="btn btn-dark btn-social mx-2" href="#!" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
                     </div>
                     <div class="col-lg-4 text-lg-end">
                         <a class="link-dark text-decoration-none me-3" href="#!">Privacy Policy</a>
@@ -546,5 +552,8 @@
         <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
         <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
         <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
+        <style>
+            <div class="icon-green">{ color: green; }</div><div class="icon-red">{ color: red; }</div><div class="icon-large">{ font-size: 25px;}</div>
+        </style>
     </body>
 </html>
