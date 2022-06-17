@@ -60,7 +60,7 @@ html(lang='en')
                     h1.text-uppercase(style='display:inline') Comparer
                     img(src='assets/img/navbar-logo.svg ' alt='...' style="height:3rem; display:inline; margin-top: -1rem; margin-right: 0.5rem; margin-left: 0.5rem;")
                     h1.text-uppercase(style='display:inline') Predictor
-                a.btn.btn-primary.btn-xl.text-uppercase(href='#compare', style="margin-top: 1rem") Start Comparing
+                a.btn.btn-primary.btn-xl.text-uppercase(href='#compare', style="margin-top: 1rem; color: #212529") Start Comparing
 
 
         div#alert-modal.modal.fade
@@ -110,7 +110,7 @@ html(lang='en')
                             option(value="past_data") Historical Data
                             option(value="predictions") Future Predictions
                     .col-12
-                        button.btn.btn-primary(type="submit") Submit
+                        button.btn.btn-primary(type="submit",style="color: #212529") Submit
                 div#CompareLoadingSpinner.d-flex.align-items-center.visually-hidden
                     strong Fetching data.....
                     div.spinner-border.ms-auto(role='status',aria-hidden="true")
@@ -344,7 +344,7 @@ html(lang='en')
 
                     // Submit Button
                     .text-center
-                        button#submitButton.btn.btn-primary.btn-xl.text-uppercase.disabled(type='submit') Send Message
+                        button#submitButton.btn.btn-primary.btn-xl.text-uppercase.disabled(type='submit', style="color:#212529") Send Message
         // Footer
         footer.footer.py-4
             .container
