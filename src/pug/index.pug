@@ -83,7 +83,7 @@ html(lang='en')
                 form#graph-details.row.row-cols-lg-auto.g-3.align-items-center
                     .col-12
                         label.visually-hidden(for="currencies") Crypto Currencies
-                        select#currencies.select(multiple name="currencies")
+                        select#currencies.select(multiple name="currencies" required)
                             option(value="" selected disabled) Crypto Currencies
                             option(value="BTC-USD") BTC-USD
                             option(value="BCH-USD") BCH-USD
@@ -102,10 +102,10 @@ html(lang='en')
                             option(value="XEM-USD") XEM-USD
                     .col-12
                         label.visually-hidden(for="noOfDays") Number of days
-                        input#noOfDays.form-control(type="number" name="noOfDays" min="0" max="250" placeholder="days")
+                        input#noOfDays.form-control(type="number" name="noOfDays" min="0" max="250" placeholder="days" required)
                     .col-12(style="width: 15%;")
                         label.visually-hidden(for="type") Action Type
-                        select#type.select( name="type")
+                        select#type.select( name="type" required)
                             option(value="" selected disabled) Action Type
                             option(value="past_data") Historical Data
                             option(value="predictions") Future Predictions
