@@ -77,7 +77,7 @@
                 <form class="row row-cols-lg-auto g-3 align-items-center" id="graph-details">
                     <div class="col-12">
                         <label class="visually-hidden" for="currencies">Crypto Currencies</label>
-                        <select class="select" id="currencies" multiple name="currencies">
+                        <select class="select" id="currencies" multiple name="currencies" required>
                             <option value="" selected disabled>Crypto Currencies</option>
                             <option value="BTC-USD">BTC-USD</option>
                             <option value="BCH-USD">BCH-USD</option>
@@ -98,11 +98,11 @@
                     </div>
                     <div class="col-12">
                         <label class="visually-hidden" for="noOfDays">Number of days</label>
-                        <input class="form-control" id="noOfDays" type="number" name="noOfDays" min="0" max="250" placeholder="days" />
+                        <input class="form-control" id="noOfDays" type="number" name="noOfDays" min="0" max="250" placeholder="days" required />
                     </div>
                     <div class="col-12" style="width: 15%">
                         <label class="visually-hidden" for="type">Action Type</label>
-                        <select class="select" id="type" name="type">
+                        <select class="select" id="type" name="type" required>
                             <option value="" selected disabled>Action Type</option>
                             <option value="past_data">Historical Data</option>
                             <option value="predictions">Future Predictions</option>

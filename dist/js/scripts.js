@@ -149,7 +149,7 @@ $(document).ready(function () {
             "noOfDays": $('#noOfDays').val()
         }
 
-        if (comparisonType == 'predictions' && payload["noOfDays"] <= 0) {
+        if (payload["noOfDays"] <= 0) {
             showError("Prediction requires at least 1 day to show the graph. Please check your input and try again!")
             event.preventDefault();
             return;
