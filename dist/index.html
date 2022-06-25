@@ -34,7 +34,8 @@
                 </button>
                 <div class="collapse navbar-collapse" id="navbarResponsive">
                     <ul class="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                        <li class="nav-item"><a class="nav-link" href="#compare">Predict</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#predict">Predict</a></li>
+                        <li class="nav-item"><a class="nav-link" href="#exchange">Exchange</a></li>
                         <li class="nav-item"><a class="nav-link" href="#workflow">About</a></li>
                         <li class="nav-item"><a class="nav-link" href="#team">Team</a></li>
                         <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
@@ -45,13 +46,15 @@
         <!-- Masthead-->
         <header class="masthead">
             <div class="container">
-                <div class="masthead-subheading">Welcome To CP2</div>
+                <div class="masthead-subheading">Welcome To CPE</div>
                 <div style="width: 100%">
                     <h1 class="text-uppercase" style="display: inline">Comparer</h1>
                     <img src="assets/img/navbar-logo.svg " alt="..." style="height: 3rem; display: inline; margin-top: -1rem; margin-right: 0.5rem; margin-left: 0.5rem" />
                     <h1 class="text-uppercase" style="display: inline">Predictor</h1>
+                    <img src="assets/img/navbar-logo.svg " alt="..." style="height: 3rem; display: inline; margin-top: -1rem; margin-right: 0.5rem; margin-left: 0.5rem" />
+                    <h1 class="text-uppercase" style="display: inline">Exchanger</h1>
                 </div>
-                <a class="btn btn-primary btn-xl text-uppercase" href="#compare" style="margin-top: 1rem; color: #212529">Start Comparing</a>
+                <a class="btn btn-primary btn-xl text-uppercase" href="#predict" style="margin-top: 1rem; color: #212529">Start Exploring !</a>
             </div>
         </header>
         <div class="modal fade" id="alert-modal">
@@ -68,7 +71,7 @@
             </div>
         </div>
         <!-- Compare-->
-        <section class="page-section" id="compare">
+        <section class="page-section" id="predict">
             <div class="container">
                 <div class="text-center" id="stockName">
                     <h2 class="section-heading text-uppercase">Crypto Currency Price Predictor</h2>
@@ -117,8 +120,67 @@
                 <div class="apex-charts" id="chartForComparison"></div>
             </div>
         </section>
+        <section class="page-section bg-light" id="exchange">
+            <div class="container">
+                <div class="text-center" id="exchange_header">
+                    <h2 class="section-heading text-uppercase">Crypto Currency Exchanger</h2>
+                    <h3 class="section-subheading text-muted">Please fill and submit the form to view exchange values</h3>
+                </div>
+                <form class="row row-cols-lg-auto g-3 align-items-center" id="currency_exchange_form">
+                    <div class="col-12">
+                        <label class="visually-hidden" for="from_currencies">From Crypto Currencies</label>
+                        <select class="select" id="from_currencies" multiple name="from_currencies" required>
+                            <option value="" selected disabled>From currencies</option>
+                            <option value="BTC-USD">BTC-USD</option>
+                            <option value="BCH-USD">BCH-USD</option>
+                            <option value="XMR-USD">XMR-USD</option>
+                            <option value="ZEC-USD">ZEC-USD</option>
+                            <option value="XRP-USD">XRP-USD</option>
+                            <option value="XLM-USD">XLM-USD</option>
+                            <option value="DASH-USD">DASH-USD</option>
+                            <option value="BTG-USD">BTG-USD</option>
+                            <option value="XRP-USD">XRP-USD</option>
+                            <option value="TRX-USD">TRX-USD</option>
+                            <option value="ETC-USD">ETC-USD</option>
+                            <option value="MIOTA-USD">MIOTA-USD</option>
+                            <option value="LTC-USD">LTC-USD</option>
+                            <option value="ADA-USD">ADA-USD</option>
+                            <option value="XEM-USD">XEM-USD</option>
+                        </select>
+                    </div>
+                    <div class="col-12">
+                        <label class="visually-hidden" for="to_currencies">To Crypto Currencies</label>
+                        <select class="select" id="to_currencies" multiple name="to_currencies" required>
+                            <option value="" selected disabled>To Currencies</option>
+                            <option value="BTC-USD">BTC-USD</option>
+                            <option value="BCH-USD">BCH-USD</option>
+                            <option value="XMR-USD">XMR-USD</option>
+                            <option value="ZEC-USD">ZEC-USD</option>
+                            <option value="XRP-USD">XRP-USD</option>
+                            <option value="XLM-USD">XLM-USD</option>
+                            <option value="DASH-USD">DASH-USD</option>
+                            <option value="BTG-USD">BTG-USD</option>
+                            <option value="XRP-USD">XRP-USD</option>
+                            <option value="TRX-USD">TRX-USD</option>
+                            <option value="ETC-USD">ETC-USD</option>
+                            <option value="MIOTA-USD">MIOTA-USD</option>
+                            <option value="LTC-USD">LTC-USD</option>
+                            <option value="ADA-USD">ADA-USD</option>
+                            <option value="XEM-USD">XEM-USD</option>
+                        </select>
+                    </div>
+                    <div class="col-12"><button class="btn btn-primary" type="submit" style="color: #212529">Submit</button></div>
+                </form>
+                <div class="d-flex align-items-center visually-hidden" id="ExchangeLoadingSpinner">
+                    <strong>Fetching data.....</strong>
+                    <div class="spinner-border ms-auto" role="status" aria-hidden="true"></div>
+                </div>
+                <div class="visually-hidden" id="tableForExchange" style="margin-top: 3rem"><strong>Exchange stock values:</strong></div>
+                <div class="visually-hidden" id="tableForBasePrice" style="margin-top: 3rem"><strong>Base Price for each stock:</strong></div>
+            </div>
+        </section>
         <!-- About-->
-        <section class="page-section bg-light" id="workflow">
+        <section class="page-section" id="workflow">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">About</h2>
@@ -184,11 +246,11 @@
                     </li>
                     <li class="timeline-inverted">
                         <div class="timeline-image">
-                            <a class="stretched-link" href="#compare"></a>
+                            <a class="stretched-link" href="#predict"></a>
                             <h4 style="margin-top: 50px; color: #212529">
                                 Start
                                 <br />
-                                Comparing
+                                Exploring !
                             </h4>
                         </div>
                     </li>
@@ -196,7 +258,7 @@
             </div>
         </section>
         <!-- Team-->
-        <section class="page-section" id="team">
+        <section class="page-section bg-light" id="team">
             <div class="container">
                 <div class="text-center">
                     <h2 class="section-heading text-uppercase">Our Amazing Team</h2>

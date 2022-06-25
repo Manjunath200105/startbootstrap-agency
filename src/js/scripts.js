@@ -32,7 +32,7 @@ window.addEventListener('DOMContentLoaded', event => {
             offset: 74,
         });
     }
-    ;
+
 
     // Collapse responsive navbar when toggler is visible
     const navbarToggler = document.body.querySelector('.navbar-toggler');
@@ -47,6 +47,34 @@ window.addEventListener('DOMContentLoaded', event => {
         });
     });
 });
+
+var render_exchange_table = function (id, data) {
+    $(id + " table").remove();
+    var table = $('<table>').addClass('table table-bordered table-striped')
+    var header = $('<thead>').attr('style', "background: black;color: white;").addClass('thead-dark')
+    var body = $('<tbody>')
+
+    var hrow = $('<tr>')
+    var stockName = $('<th>').attr('scope', 'col').text('Stock Name')
+    var base_price = $('<th>').attr('scope', 'col').text('Value')
+
+    hrow.append(stockName).append(base_price)
+
+    header.append(hrow)
+    Object.keys(data).forEach(key => {
+        var stock_name = $('<th>').attr('scope', 'col').text(key)
+        var value = $('<td>').text(data[key])
+
+        var row = $('<tr>')
+        row.append(stock_name)
+        row.append(value)
+
+        body.append(row)
+    });
+    table.append(header);
+    table.append(body);
+    $(id).append(table);
+}
 
 var get_date_range = function (numberOfDays, type) {
     if (type == 'past_data') {
@@ -102,7 +130,7 @@ var toggleLoadingIcon = function (payload) {
     $("#graph-details").toggleClass("visually-hidden");
     $("#CompareLoadingSpinner").toggleClass("visually-hidden");
     if ($('#chartForComparison').length === 0) {
-        $('#compare .container').append('<div class=\"apex-charts\" id=\"chartForComparison\"</div>');
+        $('#predict .container').append('<div class=\"apex-charts\" id=\"chartForComparison\"</div>');
         $("#CompareLoadingSpinner strong").text("");
     } else {
         $("#chartForComparison").remove();
@@ -160,6 +188,38 @@ $(document).ready(function () {
                 success: function (data) {
                     toggleLoadingIcon(payload)
                     render_comparision_chart(data, comparisonType)
+                },
+                failure: function (data) {
+                    toggleLoadingIcon(payload)
+                    showError(data['msg'])
+                }
+            });
+
+        // alert( "Handler for .submit() called." );
+        event.preventDefault();
+    });
+
+    $("#currency_exchange_form").submit(function (event) {
+        var payload = {
+            "from_currencies": $('#from_currencies').val().join(","),
+            "to_currencies": $('#to_currencies').val().join(",")
+        }
+
+        $("#ExchangeLoadingSpinner").removeClass("visually-hidden")
+        $("#tableForBasePrice").addClass("visually-hidden")
+        $("#tableForExchange").addClass("visually-hidden")
+
+        $.post(
+            {
+                url: "http://127.0.0.1:8080/exchange",
+                dataType: "json",
+                data: payload,
+                success: function (data) {
+                    $("#ExchangeLoadingSpinner").addClass("visually-hidden")
+                    $("#tableForBasePrice").removeClass("visually-hidden")
+                    $("#tableForExchange").removeClass("visually-hidden")
+                    render_exchange_table('#tableForBasePrice', data['base_price'])
+                    render_exchange_table('#tableForExchange', data['exchange'])
                 },
                 failure: function (data) {
                     toggleLoadingIcon(payload)
