@@ -45,7 +45,9 @@ html(lang='en')
                 #navbarResponsive.collapse.navbar-collapse
                     ul.navbar-nav.text-uppercase.ms-auto.py-4.py-lg-0
                         li.nav-item
-                            a.nav-link(href='#compare') Predict
+                            a.nav-link(href='#predict') Predict
+                        li.nav-item
+                            a.nav-link(href='#exchange') Exchange
                         li.nav-item
                             a.nav-link(href='#workflow') About
                         li.nav-item
@@ -75,7 +77,7 @@ html(lang='en')
                     button.btn.btn-primary(type='button' data-dismiss="modal") Close
 
         // Compare
-        section#compare.page-section
+        section#predict.page-section
             .container
                 div#stockName.text-center
                     h2.section-heading.text-uppercase Crypto Currency Price Predictor
@@ -116,8 +118,62 @@ html(lang='en')
                     div.spinner-border.ms-auto(role='status',aria-hidden="true")
                 div#chartForComparison.apex-charts
 
+        section#exchange.page-section.bg-light
+            .container
+                div#exchange_header.text-center
+                    h2.section-heading.text-uppercase Crypto Currency Exchanger
+                    h3.section-subheading.text-muted Please fill and submit the form to view exchange values
+                form#currency_exchange_form.row.row-cols-lg-auto.g-3.align-items-center
+                    .col-12
+                        label.visually-hidden(for="from_currencies") From Crypto Currencies
+                        select#from_currencies.select(multiple name="from_currencies" required)
+                            option(value="" selected disabled) From currencies
+                            option(value="BTC-USD") BTC-USD
+                            option(value="BCH-USD") BCH-USD
+                            option(value="XMR-USD") XMR-USD
+                            option(value="ZEC-USD") ZEC-USD
+                            option(value="XRP-USD") XRP-USD
+                            option(value="XLM-USD") XLM-USD
+                            option(value="DASH-USD") DASH-USD
+                            option(value="BTG-USD") BTG-USD
+                            option(value="XRP-USD") XRP-USD
+                            option(value="TRX-USD") TRX-USD
+                            option(value="ETC-USD") ETC-USD
+                            option(value="MIOTA-USD") MIOTA-USD
+                            option(value="LTC-USD") LTC-USD
+                            option(value="ADA-USD") ADA-USD
+                            option(value="XEM-USD") XEM-USD
+                    .col-12
+                        label.visually-hidden(for="to_currencies") To Crypto Currencies
+                        select#to_currencies.select(multiple name="to_currencies" required)
+                            option(value="" selected disabled) To Currencies
+                            option(value="BTC-USD") BTC-USD
+                            option(value="BCH-USD") BCH-USD
+                            option(value="XMR-USD") XMR-USD
+                            option(value="ZEC-USD") ZEC-USD
+                            option(value="XRP-USD") XRP-USD
+                            option(value="XLM-USD") XLM-USD
+                            option(value="DASH-USD") DASH-USD
+                            option(value="BTG-USD") BTG-USD
+                            option(value="XRP-USD") XRP-USD
+                            option(value="TRX-USD") TRX-USD
+                            option(value="ETC-USD") ETC-USD
+                            option(value="MIOTA-USD") MIOTA-USD
+                            option(value="LTC-USD") LTC-USD
+                            option(value="ADA-USD") ADA-USD
+                            option(value="XEM-USD") XEM-USD
+                    .col-12
+                        button.btn.btn-primary(type="submit",style="color: #212529") Submit
+                div#ExchangeLoadingSpinner.d-flex.align-items-center.visually-hidden
+                    strong Fetching data.....
+                    div.spinner-border.ms-auto(role='status',aria-hidden="true")
+                div#tableForBasePrice.visually-hidden(style="margin-top: 3rem;")
+                    strong Base Price for each stock:
+                div#tableForExchange.visually-hidden(style="margin-top: 3rem;")
+                    strong Exchange stock values:
+
         // About
-        section#workflow.page-section.bg-light
+        section#workflow.page-section
             .container
                 .text-center
                     h2.section-heading.text-uppercase About
@@ -202,7 +258,7 @@ html(lang='en')
                                 | Comparing
 
         // Team
-        section#team.page-section
+        section#team.page-section.bg-light
             .container
                 .text-center
                     h2.section-heading.text-uppercase Our Amazing Team
