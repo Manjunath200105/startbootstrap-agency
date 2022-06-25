@@ -57,12 +57,13 @@ html(lang='en')
         // Masthead
         header.masthead
             .container
-                .masthead-subheading Welcome To CP2
+                .masthead-subheading Welcome To CPE
                 div(style='width:100%')
                     h1.text-uppercase(style='display:inline') Comparer
                     img(src='assets/img/navbar-logo.svg ' alt='...' style="height:3rem; display:inline; margin-top: -1rem; margin-right: 0.5rem; margin-left: 0.5rem;")
                     h1.text-uppercase(style='display:inline') Predictor
-                a.btn.btn-primary.btn-xl.text-uppercase(href='#compare', style="margin-top: 1rem; color: #212529") Start Comparing
+                    img(src='assets/img/navbar-logo.svg ' alt='...' style="height:3rem; display:inline; margin-top: -1rem; margin-right: 0.5rem; margin-left: 0.5rem;")
+                    h1.text-uppercase(style='display:inline') Exchanger
 
 
         div#alert-modal.modal.fade
@@ -167,10 +168,10 @@ html(lang='en')
                 div#ExchangeLoadingSpinner.d-flex.align-items-center.visually-hidden
                     strong Fetching data.....
                     div.spinner-border.ms-auto(role='status',aria-hidden="true")
-                div#tableForBasePrice.visually-hidden(style="margin-top: 3rem;")
-                    strong Base Price for each stock:
                 div#tableForExchange.visually-hidden(style="margin-top: 3rem;")
                     strong Exchange stock values:
+                div#tableForBasePrice.visually-hidden(style="margin-top: 3rem;")
+                    strong Base Price for each stock:
 
         // About
         section#workflow.page-section
